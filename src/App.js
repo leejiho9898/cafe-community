@@ -5,42 +5,57 @@ function App() {
   return (
     <div className="App">
       <div className="header">
-        <div>NAVER</div>
-        <div>카페</div>
+        <div id="logo">
+          <a href="https://www.naver.com">JIVER</a>
+        </div>
+        <div id="logo-right">
+          <a href="https://section.cafe.naver.com/">카페</a>
+        </div>
         <div>
           <input type="text" />
         </div>
-        <div>
-          <span className="돋보기"></span>
+        <div className="dot">
+          <span></span>
         </div>
         <div>통합검색</div>
-        <div>닉네임</div>
       </div>
       <div className="nav">
-        <ul>
-          <li>카페홈</li>
-          <li>주제별</li>
-          <li>지역별</li>
-          <li>랭킹</li>
-          <li>대표카페</li>
-          <li>내소식</li>
-          <li>채팅</li>
-          <li>카페지원센터</li>
-        </ul>
         <div className="main">
           <div className="main-first">
             <div>Editer's Pick</div>
-            <div>모두보기</div>
-            <div><span></span></div>
-            <div><span></span></div>
           </div>
           <div className="main-Editers-pick">
-            <span></span>
-            <span></span>
+            <span className="editer-one">d</span>
+            <span className="editer-two">d</span>
+            <span className="editer-three">d</span>
+          </div>
+          <div className="side-ad">
             <span></span>
           </div>
-          <div className="side-ad"><span></span></div>
-          <div></div>
+          <div className="main-second">
+            <div className="main-second-top">
+              <ul>
+                <li>내 카페</li>
+                <li>새글피드</li>
+              </ul>
+            </div>
+            <div className="in-mycafe">
+              <ul>
+                <li>전체</li>
+                <li>즐겨찾는카페</li>
+                <li>운영카페</li>
+              </ul>
+            </div>
+            <div className="main-second-cafelist">
+              <ul>
+                <li>jiho's cafe</li>
+                <li>디젤매니아</li>
+                <li>수만휘</li>
+                <li>중고나라</li>
+                <li>매드탱크 공식카페</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

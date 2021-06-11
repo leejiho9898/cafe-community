@@ -2,6 +2,75 @@
   text-align: center;
 }
 
+.header{
+  border-bottom: rgb(227, 197, 247);
+  background-color: #5b6697;
+  height: 54px ;
+  display: block;
+}
+body .header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header .dot{
+  height: 54px;
+  background-image: url(./71403.png);
+  background-size: cover;
+  border: black 1px;
+}
 .header div{
-  display: inline;
+  color: aliceblue;
+  flex-basis: 65px;
+
+}
+.header a{
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.header #logo{
+  font-weight: bold;
+  float: left;
+  width: 55px;
+  height: 24px;
+}
+.header #logo-right{
+  width: 52px;
+  font-size: 26px;
+  float: left;
+}
+.main-Editers-pick{
+  display: flex;
+  justify-content: center;
+  
+
+}
+.main-first{
+  display: inline-block;
+  width: 100px;
+  height: 50px;
+  text-align:left;
+}
+.main-Editers-pick .editer-one{
+  width: 300px;
+  height: 300px;
+  background-image:url(./faith-yarn-hgtWvsq5e2c-unsplash.jpg) ;
+  background-size: cover; 
+  border: solid gray  1px ;
+}
+.main-Editers-pick .editer-two{
+  width: 300px;
+  height: 300px;
+  background-image:url(./faith-yarn-Wr0TpKqf26s-unsplash.jpg) ;
+  background-size: cover; 
+  border-top: solid gray 1px;
+  border-bottom: solid gray  1px;
+}
+.main-Editers-pick .editer-three{
+  width: 300px;
+  height: 300px;
+  background-image:url(./daniel-monteiro-VMeHP3mNJL4-unsplash.jpg) ;
+  background-size: cover; 
+  border: solid gray 1px ;
 }
