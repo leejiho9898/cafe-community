@@ -7,12 +7,7 @@
   position: relative;
   width: 100%;
   height: 99%;
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.144),
-      rgba(0, 0, 0, 0.233)
-    ),
-    url(../../components/img/photo-1519933045055-2e2d61a64bcf.jpg), no-repeat;
-  background-size: cover;
+  background-color: white;
 }
 #header {
   display: flex;
@@ -30,14 +25,13 @@
 .logo {
   height: 37px;
   font-size: xx-large;
-  flex-basis: 100px;
-
+  flex-basis: 140px;
 }
 
 .logo a {
   text-decoration: none;
   align-items: center;
-  color: rgb(230,230,230);
+  color: black;
   font-weight: 600;
 }
 
@@ -49,7 +43,7 @@
 .search {
   height: 35px;
   width: 300px;
-  border: 2px rgb(230,230,230) solid;
+  border: 2px black solid;
   border-radius: 3px;
 }
 
@@ -63,7 +57,7 @@
 }
 .search-box .search-ico span {
   vertical-align: middle;
-  color: rgb(230,230,230);
+  color: black;
 }
 
 .user {
@@ -79,7 +73,7 @@
   display: inline;
   margin: 8px;
   font-size: large;
-  color: rgb(230,230,230);
+  color: black;
 }
 
 /* 여기까지 헤더 */
@@ -90,17 +84,47 @@
   margin: 0 auto;
   margin-top: 50px;
   height: 80%;
-  background-color: rgb(25, 24, 26);
+  background-color: rgb(255, 251, 244);
 }
 
-#cafe-list {
-  flex-basis: 600px;
+.cafe-list {
+  height: 100px;
 }
 
-#cafe-list ul {
+
+.cafe-object {
+  display: flex;
+  color: black;
+  border-top: gray solid 1px;
+  height: 55px;
 
 }
-#cafe-list li {
-    font-size: xx-large;
-    color: rgb(230,230,230);
+.cafe-thumb {
+  /* 해당카페이미지*/
+  /* 임시로 이상한거 넣었음*/
+  display: inline-block;
+  height: 55px;
+  width: 55px;
+  background-color: red;
+}
+
+.cafe-object a {
+  align-items: center;
+  font-size: 16px;
+  margin-left: 10px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.cafe-recent{
+  display: block;
+  height: 17px;
+}
+.cafe-recent ul{
+  height: 45px;
+}
+.cafe-recent li{
+  font-size: 14px;
+  height: 15px;
 }
