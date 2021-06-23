@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+#land {
+  position: relative;
+  width: 100%;
+  height: 99%;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.144),
+      rgba(0, 0, 0, 0.233)
+    ),
+    url(../../components/img/photo-1519933045055-2e2d61a64bcf.jpg), no-repeat;
+  background-size: cover;
+}
+#header {
+  display: flex;
+  height: 60px;
+}
+#search-area {
+  margin-top: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 45px;
+}
+
+.logo {
+  height: 37px;
+  font-size: xx-large;
+  flex-basis: 100px;
+
+}
+
+.logo a {
+  text-decoration: none;
+  align-items: center;
+  color: rgb(230,230,230);
+  font-weight: 600;
+}
+
+.search-box {
+  display: flex;
+  width: 400px;
+  height: 46px;
+}
+.search {
+  height: 35px;
+  width: 300px;
+  border: 2px rgb(230,230,230) solid;
+  border-radius: 3px;
+}
+
+.search-box .search-ico {
+  height: 36px;
+  width: 50px;
+  font-size: x-large;
+  text-align: center;
+  margin-top: 2px;
+  flex-basis: 70px;
+}
+.search-box .search-ico span {
+  vertical-align: middle;
+  color: rgb(230,230,230);
+}
+
+.user {
+  display: flex;
+  flex-basis: 200px;
+}
+.user ul {
+  display: inline-block;
+  height: 20;
+  align-items: center;
+}
+.user li {
+  display: inline;
+  margin: 8px;
+  font-size: large;
+  color: rgb(230,230,230);
+}
+
+/* 여기까지 헤더 */
+
+#cafe-container {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 50px;
+  height: 80%;
+  background-color: rgb(25, 24, 26);
+}
+
+#cafe-list {
+  flex-basis: 600px;
+}
+
+#cafe-list ul {
+
+}
+#cafe-list li {
+    font-size: xx-large;
+    color: rgb(230,230,230);
+}
