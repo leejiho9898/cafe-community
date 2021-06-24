@@ -1,8 +1,3 @@
-* {
-  margin: 0;
-  height: 100%;
-  overflow: hidden;
-}
 #land {
   position: relative;
   width: 100%;
@@ -88,16 +83,14 @@
 }
 
 .cafe-list {
-  height: 100px;
+  height: 120px;
 }
-
 
 .cafe-object {
   display: flex;
   color: black;
   border-top: gray solid 1px;
   height: 55px;
-
 }
 .cafe-thumb {
   /* 해당카페이미지*/
@@ -109,6 +102,7 @@
 }
 
 .cafe-object a {
+  display: flex;
   align-items: center;
   font-size: 16px;
   margin-left: 10px;
@@ -117,14 +111,16 @@
   font-weight: bold;
 }
 
-.cafe-recent{
+.cafe-recent {
   display: block;
   height: 17px;
 }
-.cafe-recent ul{
-  height: 45px;
+.cafe-recent ul {
+  min-height: 45px;
+  margin-left: 65px;
+  margin-top: 8px;
 }
-.cafe-recent li{
+.cafe-recent li {
   font-size: 14px;
-  height: 15px;
+  margin: 3px;
 }
