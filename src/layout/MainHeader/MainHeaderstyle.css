@@ -1,0 +1,64 @@
+.MainHeader-container {
+  width: 70%;
+  margin: 0 auto;
+}
+.gnb {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  height: 35px;
+}
+.gnb-menu a {
+  text-decoration: none;
+  color: inherit;
+}
+#dropdown {
+  position: relative;
+  display: inline-block;
+}
+#dropdown li {
+  list-style: none;
+}
+.mycafe-list {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 500px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+#dropdown:hover .mycafe-list {
+  display: block;
+}
+
+.cafe-object {
+  display: flex;
+  color: black;
+  height: 40px;
+}
+.cafe-thumb {
+  /* 해당카페이미지*/
+  /* 임시로 이상한거 넣었음*/
+  display: inline-block;
+  height: 31px;
+  width: 31px;
+  background-color: #efe7f0;
+}
+
+.cafe-object a {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-left: 10px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+#front-img {
+    margin: 0 auto;
+    width: 1080px;
+    height: 225px;
+    background-image: url(/src/static/frontimg.png);
+    background-size: cover;
+}
