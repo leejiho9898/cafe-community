@@ -1,0 +1,129 @@
+body a {
+  text-decoration: none;
+  color: black;
+}
+body a:hover {
+  text-decoration: underline;
+}
+.flex {
+  display: flex;
+}
+
+.sidenav-container {
+  width: 200px;
+  height: 100vh;
+  float: left;
+  margin-left: 15%;
+  margin-top: 20px;
+}
+
+.info-action-tab {
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-top: 2px solid #333;
+  border-bottom: 1px solid #bdbdbd;
+}
+.info-tab-link {
+  flex-basis: 90px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.cafe-info-data {
+  display: flex;
+  border-bottom: 1px solid #bdbdbd;
+  padding: 12px;
+}
+.cafe-thumb {
+  /* 해당카페이미지*/
+  /* 임시로 이상한거 넣었음*/
+  display: inline-block;
+  height: 58px;
+  width: 58px;
+  background-color: #efe7f0;
+  margin-right: 10px;
+}
+.ico-manager {
+  text-align: center;
+  color: #666;
+  background-color: #fff;
+  border: 1px solid #666;
+  font-size: 10px;
+  display: inline-block;
+  width: 30px;
+  height: 12px;
+}
+.bold {
+  font-weight: bold;
+  color: black;
+  font-size: 13px;
+}
+.data-list {
+  font-size: 12px;
+  color: #666;
+  padding: 2px;
+}
+
+.member-info-data {
+  border-bottom: 1px solid #bdbdbd;
+}
+
+.my-info {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+}
+
+.mask {
+  display: inline-block;
+  height: 58px;
+  width: 58px;
+  background-color: #efe7f0;
+  margin-right: 10px;
+}
+
+.my-info-grade {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.my-ex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cafe-write-btn {
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    background-color: #666;
+    color: white;
+    margin-bottom: 5px;
+}
+.cafe-chat-btn {
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid gray;
+}
+
+.search-bar{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.post-list{
+    border-top: 1px solid rgb(26, 26, 26);
+    border-bottom: 1px solid rgb(26, 26, 26);
+}
+.post-object{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}

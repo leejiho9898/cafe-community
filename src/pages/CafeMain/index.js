@@ -10,7 +10,6 @@ const CafeMain = () => {
     <>
       <MainHeader />
       <MainSideNav />
-      <Link to="/cafe/join">가입하러가기</Link>
       <div></div>
       <Footer />
     </>
