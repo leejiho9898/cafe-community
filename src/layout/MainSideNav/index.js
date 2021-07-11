@@ -90,52 +90,52 @@ function MainSideNav() {
           <input type="text" />
           <BsSearch size="18" />
         </div>
-        <div className="post-list">
-          <div className="post-object">
+        <div className="notice-board-list">
+          <div className="notice-board">
             <BsFileText size="18" />
             <Link to="">전체게시판</Link>
           </div>
-          <div className="post-object">
+          <div className="notice-board">
             <BsFileText size="18" />
             <Link to="">잡담게시판</Link>
           </div>
-          <div className="post-object">
+          <div className="notice-board">
             <BsFileText size="18" />
             <Link to="">공지게시판</Link>
           </div>
-          <div className="post-object">
+          <div className="notice-board">
             <BsFileText size="18" />
             <Link to="">영화게시판</Link>
           </div>
-          <div className="post-object">
+          <div className="notice-board">
             <BsFileText size="18" />
             <Link to="">고민게시판</Link>
           </div>
-          <div className="post-object">
+          <div className="notice-board">
             <BsFileText size="18" />
             <Link to="">포토게시판</Link>
           </div>
-          <div className="post-object">
+          <div className="notice-board">
             <BsFileText size="18" />
             <Link to="">유머게시판</Link>
           </div>
-          <div className="post-object">
+          <div className="notice-board">
             <BsFileText size="18" />
             <Link to="">뉴스게시판</Link>
           </div>
-          <div className="post-object">
+          <div className="notice-board">
             <BsFileText size="18" />
             <Link to="">패션게시판</Link>
           </div>
-          <div className="post-object">
+          <div className="notice-board">
             <BsFileText size="18" />
             <Link to="">근황게시판</Link>
           </div>
-          <div className="post-object">
+          <div className="notice-board">
             <BsFileText size="18" />
             <Link to="">게임게시판</Link>
           </div>
-          <div className="post-object">
+          <div className="notice-board">
             <BsFileText size="18" />
             <Link to="">영화 추천 게시판</Link>
           </div>

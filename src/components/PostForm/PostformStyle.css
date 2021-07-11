@@ -1,0 +1,16 @@
+#tit {
+  padding: 12px;
+  width: 850px;
+}
+
+#select {
+  padding: 12px;
+  width: 500px;
+}
+
+.ck-rounded-corners .ck.ck-editor__editable:not(.ck-editor__nested-editable),
+.ck.ck-editor__editable:not(.ck-editor__nested-editable).ck-rounded-corners {
+  border: 1px solid black;
+  height: 50vh;
+  overflow-y: scroll;
+}

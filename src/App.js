@@ -10,10 +10,10 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={LandingPage} />
-        <Route path="/cafeMain" component={CafeMain} />
+        <Route path="/cafeMain/:post?" component={CafeMain} />
         <Route path="/join" component={JoinForm} />
+
         {/* <Route path="/logout" component={Logout} /> */}
-        <Route path="/dohyun/test" component={PostForm} />
       </Switch>
     </BrowserRouter>
   );

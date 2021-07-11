@@ -13,7 +13,6 @@ body a:hover {
   width: 200px;
   height: 100vh;
   float: left;
-  margin-top: 20px;
 }
 
 .info-action-tab {
@@ -117,11 +116,11 @@ body a:hover {
     align-items: center;
     justify-content: center;
 }
-.post-list{
+.notice-board-list{
     border-top: 1px solid rgb(26, 26, 26);
     border-bottom: 1px solid rgb(26, 26, 26);
 }
-.post-object{
+.notice-board{
     display: flex;
     align-items: center;
     padding: 5px;
