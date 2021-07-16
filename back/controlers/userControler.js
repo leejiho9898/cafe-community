@@ -1,11 +1,11 @@
 import User from "../models/user";
 
 export const register = async (req, res) => {
-  const { email, password, name } = req.body;
+  const { id, password, name } = req.body;
 
   try {
     const exist = await User.findOne({
-      email,
+      id,
     });
     if (exist) {
       return res.status(500).json({
@@ -14,7 +14,7 @@ export const register = async (req, res) => {
       });
     }
     const user = new User({
-      email,
+      id,
       password,
       name,
     });
