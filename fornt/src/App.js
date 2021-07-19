@@ -4,6 +4,8 @@ import LandingPage from "./pages/LandingPage";
 import CafeMain from "./pages/CafeMain";
 import JoinForm from "components/JoinForm/JoinForm";
 import PostForm from "components/PostForm";
+import Signup from "pages/Signup";
+import Login from "pages/Login";
 
 function App() {
   return (
@@ -12,8 +14,8 @@ function App() {
         <Route exact path="/" component={LandingPage} />
         <Route path="/cafeMain/:post?" component={CafeMain} />
         <Route path="/join" component={JoinForm} />
-
-        {/* <Route path="/logout" component={Logout} /> */}
+        <Route path="/signup" exact component={Signup} />
+        <Route path="/login" exact component={Login} />
       </Switch>
     </BrowserRouter>
   );

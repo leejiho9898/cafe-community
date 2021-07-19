@@ -3,10 +3,19 @@ import mongoose from "mongoose";
 import "dotenv/config";
 import userRouter from "./routers/userRouter";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 const app = express();
+app.use(
+  cors({
+    credentials: true,
+    origin: true,
+  })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 mongoose
   .connect(process.env.DB_URL, {
     useNewUrlParser: true,

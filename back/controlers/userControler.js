@@ -21,9 +21,10 @@ export const register = async (req, res) => {
     console.log(user);
     await user.setPassword(password);
     await user.save();
+    const token = await user.generateToken();
     const data = user.serialize();
 
-    res.status(200).json({
+    res.cookie("user", token).status(200).json({
       success: true,
       user: data,
     });
