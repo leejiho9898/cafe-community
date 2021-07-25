@@ -81,12 +81,11 @@ export const login = async (req, res) => {
   }
 };
 
-
 //로그아웃
 
-export const logout = async(req,res)=>{
-  res.cookie("user","").status(200).json({
-  success:true,
-  message:"로그아웃 성공!",
- })
-}
+export const logout = async (req, res) => {
+  res.cookie("user", "").status(200).json({
+    success: true,
+    message: "로그아웃 성공!",
+  });
+};
