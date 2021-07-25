@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import "dotenv/config";
 import userRouter from "./routers/userRouter";
+import cafeRouter from "./routers/cafeRouter";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 const app = express();
@@ -30,5 +31,6 @@ const handleListening = () => {
 };
 
 app.use("/api/user", userRouter);
+app.use("/api/cafe", cafeRouter);
 
 app.listen(process.env.PORT, handleListening);
