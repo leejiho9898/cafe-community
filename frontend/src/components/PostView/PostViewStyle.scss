@@ -1,0 +1,43 @@
+.post-container {
+    padding: 29px 29px 0;
+    border: 1px solid gray;
+    border-radius: 6px;
+   margin-left: 190px;
+}
+.post-header{
+    border-bottom: 1px solid gray;
+    padding-bottom: 13px;
+}
+.post-tit{
+    font-size: 26px;
+    font-weight: 400;
+    padding: 15px;
+}
+.title{
+    margin-top: 3px;
+    margin-right: 12px;
+    font-size: 17px;
+    font-weight: bold;
+
+}
+.writer{
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+}
+.mask{
+    display: inline-block;
+    height: 36px;
+    width: 36px;
+    background-color: #efe7f0;
+}
+.nick{
+    font-weight: 600;
+}
+
+.contents{
+    padding: 8px;
+    margin: 8px;
+    min-height: 300px;
+    border-bottom: 1px solid gray;
+}

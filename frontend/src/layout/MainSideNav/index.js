@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+
 import { Link } from "react-router-dom";
 import { TiDocumentText, TiMessages } from "react-icons/ti";
 import { BsSearch, BsFileText } from "react-icons/bs";
 import "./MainSideNav.css";
+import PostForm from "./../../components/PostForm/index";
 
 function MainSideNav() {
+
   const [InfoSwich, setInfoSwich] = useState(true);
   return (
     <>
@@ -81,7 +84,7 @@ function MainSideNav() {
           )}
         </div>
         <div className="cafe-write-btn blk">
-          <Link to="">카페 글쓰기</Link>
+          <Link to="/cafeMain/write">카페 글쓰기</Link>
         </div>
         <div className="cafe-chat-btn">
           <Link to="">채팅</Link>
@@ -93,51 +96,51 @@ function MainSideNav() {
         <div className="notice-board-list">
           <div className="notice-board">
             <BsFileText size="18" />
-            <Link to="">전체게시판</Link>
+            <Link to="board">전체게시판</Link>
           </div>
           <div className="notice-board">
             <BsFileText size="18" />
-            <Link to="">잡담게시판</Link>
+            <Link to="board">잡담게시판</Link>
           </div>
           <div className="notice-board">
             <BsFileText size="18" />
-            <Link to="">공지게시판</Link>
+            <Link to="/cafeMain/board">공지게시판</Link>
           </div>
           <div className="notice-board">
             <BsFileText size="18" />
-            <Link to="">영화게시판</Link>
+            <Link to="/cafeMain/board">영화게시판</Link>
           </div>
           <div className="notice-board">
             <BsFileText size="18" />
-            <Link to="">고민게시판</Link>
+            <Link to="/cafeMain/board">고민게시판</Link>
           </div>
           <div className="notice-board">
             <BsFileText size="18" />
-            <Link to="">포토게시판</Link>
+            <Link to="/cafeMain/board">포토게시판</Link>
           </div>
           <div className="notice-board">
             <BsFileText size="18" />
-            <Link to="">유머게시판</Link>
+            <Link to="/cafeMain/board">유머게시판</Link>
           </div>
           <div className="notice-board">
             <BsFileText size="18" />
-            <Link to="">뉴스게시판</Link>
+            <Link to="/cafeMain/board">뉴스게시판</Link>
           </div>
           <div className="notice-board">
             <BsFileText size="18" />
-            <Link to="">패션게시판</Link>
+            <Link to="/cafeMain/board">패션게시판</Link>
           </div>
           <div className="notice-board">
             <BsFileText size="18" />
-            <Link to="">근황게시판</Link>
+            <Link to="/cafeMain/board">근황게시판</Link>
           </div>
           <div className="notice-board">
             <BsFileText size="18" />
-            <Link to="">게임게시판</Link>
+            <Link to="/cafeMain/board">게임게시판</Link>
           </div>
           <div className="notice-board">
             <BsFileText size="18" />
-            <Link to="">영화 추천 게시판</Link>
+            <Link to="/cafeMain/board">영화 추천 게시판</Link>
           </div>
         </div>
       </div>

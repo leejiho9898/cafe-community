@@ -14,7 +14,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route path="/createcafe" component={CreateCafe} />
-        <Route path="/cafeMain/:post?" component={CafeMain} />
+        <Route path="/cafeMain/:cafe?" component={CafeMain} />
         <Route path="/join" component={JoinForm} />
         <Route path="/signup" exact component={Signup} />
         <Route path="/login" exact component={Login} />

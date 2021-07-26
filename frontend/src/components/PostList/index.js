@@ -49,7 +49,7 @@ function PostList() {
                   <div>123123</div>
                 </td>
                 <td className="post-tit">
-                  <Link>안녕하세요 가입인사입니다.</Link>
+                  <Link to="board/post">안녕하세요 가입인사입니다.</Link>
                 </td>
                 <td className="td-name">유재석</td>
                 <td className="td-date">2021.07.10.</td>

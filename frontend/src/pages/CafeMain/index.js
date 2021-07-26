@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Link } from "react-router-dom";
+import { Route, Link, Switch } from "react-router-dom";
 import Footer from "layout/Footer";
 import LandingPage from "../LandingPage";
 import MainHeader from "./../../layout/MainHeader/index";
@@ -8,6 +8,7 @@ import "./CafeMainStyle.css";
 import PostList from "./../../components/PostList/index";
 import PostForm from "components/PostForm";
 import JoinForm from "components/JoinForm/JoinForm";
+import PostView from "components/PostView";
 
 const CafeMain = ({ match }) => {
   const board = match.params.id;
@@ -74,7 +75,13 @@ const CafeMain = ({ match }) => {
         <MainHeader />
         <div className="main">
           <MainSideNav />
-          <div className="contents">
+          <div className="content">
+            <Switch>
+              <Route path="/cafeMain/join" exact component={JoinForm} />
+              <Route path="/cafeMain/write" exact component={PostForm} />
+              <Route path="/cafeMain/board/post/:postid?" exact component={PostView} />
+              <Route path="/cafeMain/board:boardid?" exact component={PostList} />
+            </Switch>
           </div>
         </div>
         <Footer />
