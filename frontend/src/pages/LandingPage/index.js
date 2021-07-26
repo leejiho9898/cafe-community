@@ -2,6 +2,7 @@ import React from "react";
 import "./LandingPageStyle.css";
 import LandingHeader from "layout/LandingHeader";
 import Footer from "layout/Footer";
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   return (
@@ -16,7 +17,7 @@ const LandingPage = () => {
                 내카페
                 <span className="num">3</span>
               </li>
-              <li>즐겨찾는 카페</li>
+              <li><Link to="/createcafe">카페 만들기</Link></li>
             </ul>
           </div>
           <div id="cafe-container">

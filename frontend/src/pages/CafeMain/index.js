@@ -75,7 +75,6 @@ const CafeMain = ({ match }) => {
         <div className="main">
           <MainSideNav />
           <div className="contents">
-            <JoinForm />
           </div>
         </div>
         <Footer />
