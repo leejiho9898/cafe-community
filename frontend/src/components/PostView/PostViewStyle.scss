@@ -1,14 +1,14 @@
 .post-container {
     padding: 29px 29px 0;
-    border: 1px solid gray;
+    border: 1px solid #ebecef;
     border-radius: 6px;
    margin-left: 190px;
 }
 .post-header{
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #ebecef;
     padding-bottom: 13px;
 }
-.post-tit{
+.post-title{
     font-size: 26px;
     font-weight: 400;
     padding: 15px;
@@ -30,14 +30,45 @@
     height: 36px;
     width: 36px;
     background-color: #efe7f0;
+    margin-right: 3px;
 }
 .nick{
-    font-weight: 600;
+    margin-right: 6px;
+    font-size: 13px;
+    font-weight: 700;
 }
 
 .contents{
     padding: 8px;
     margin: 8px;
     min-height: 300px;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #ebecef;
 }
+.buttons{
+    font-weight: 700;
+    min-width: 46px;
+    height: 36px;
+    margin-left: 10px;
+    padding: 0 12px;
+    font-size: 13px;
+    line-height: 36px;
+    color: #000000;
+    background-color: #eff0f2;
+    border-radius: 6px;
+}
+.write-reply{
+        height: 88px;
+        width: 100%;
+        padding: 10px;
+        position: absolute;
+        bottom: 20px;
+}
+.reply-box {
+    display: flex;
+    border: 2px solid #ebecef;
+    padding: 15px;
+    input{
+        border: none;
+        flex-basis: 80%;
+    }
+  }

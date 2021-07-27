@@ -2,6 +2,7 @@ import React from "react";
 import "./styles.css";
 import logo from "static/logo.png";
 import { BsSearch } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const LandingHeader = () => {
   return (
@@ -29,8 +30,12 @@ const LandingHeader = () => {
         <div className="user">
           <div className="user-border">
             <ul>
-              <li>로그인</li>
-              <li>회원가입</li>
+              <li>
+                <Link to="login">로그인</Link>
+              </li>
+              <li>
+                <Link to="signup">회원가입</Link>
+              </li>
             </ul>
           </div>
         </div>

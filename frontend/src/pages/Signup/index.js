@@ -1,9 +1,13 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import client from "./../../api/client";
+import { useDispatch, useSelector } from "react-redux";
+import { SetUser } from 'modules/user';
 
 const Signup = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
   const history = useHistory();
   const [form, setForm] = useState({
     id: "",
@@ -33,12 +37,24 @@ const Signup = () => {
     };
     try {
       const response = await client.post("/user/register", body);
-      console.log(response);
-      history.push("/")
+      dispatch(SetUser(response.data.user))
+      history.push("/");
     } catch (e) {
       alert("회원가입에 실패했습니다.");
     }
   };
+
+  useEffect(() => {
+    if (user._id) {
+      history.push("/");
+      try {
+        sessionStorage.setItem("user", JSON.stringify(user));
+      } catch (e) {
+        console.log("세션 스토리지 저장에 실패했습니다");
+      }
+    }
+  }, [history, user]);
+
   return (
     <>
       <div id="Signup">

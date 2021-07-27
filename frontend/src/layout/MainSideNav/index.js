@@ -96,11 +96,11 @@ function MainSideNav() {
         <div className="notice-board-list">
           <div className="notice-board">
             <BsFileText size="18" />
-            <Link to="board">전체게시판</Link>
+            <Link to="/board">전체게시판</Link>
           </div>
           <div className="notice-board">
             <BsFileText size="18" />
-            <Link to="board">잡담게시판</Link>
+            <Link to={`/cafeMain/board`}>잡담게시판</Link>
           </div>
           <div className="notice-board">
             <BsFileText size="18" />

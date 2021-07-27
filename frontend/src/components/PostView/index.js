@@ -4,7 +4,7 @@ function PostView() {
   return (
     <div className="post-container">
       <div className="post-header">
-        <div className="post-tit">가입인사</div>
+        <div className="post-title">가입인사</div>
         <div className="writer">
           <div className="mask"></div>
           <div className="nick">이지호</div>

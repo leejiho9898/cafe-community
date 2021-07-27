@@ -5,6 +5,7 @@
   "dependencies": {
     "@ckeditor/ckeditor5-build-decoupled-document": "^29.0.0",
     "@ckeditor/ckeditor5-react": "^3.0.2",
+    "@reduxjs/toolkit": "^1.6.1",
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -14,6 +15,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
+    "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"

@@ -9,6 +9,7 @@ import PostList from "./../../components/PostList/index";
 import PostForm from "components/PostForm";
 import JoinForm from "components/JoinForm/JoinForm";
 import PostView from "components/PostView";
+import LandingHeader from "layout/LandingHeader";
 
 const CafeMain = ({ match }) => {
   const board = match.params.id;
@@ -72,6 +73,7 @@ const CafeMain = ({ match }) => {
   return (
     <>
       <div id="container">
+        <LandingHeader/>
         <MainHeader />
         <div className="main">
           <MainSideNav />
