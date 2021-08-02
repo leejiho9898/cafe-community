@@ -28,7 +28,7 @@ export const create = async (req, res) => {
     }
 
     let cafe = new Cafe(req.body);
-    cafe = await cafe.populate("manager").execPopulate(); //save하기 전에 
+    cafe = await cafe.populate("manager").execPopulate(); //save하기 전에
 
     await cafe.save();
 
@@ -39,6 +39,23 @@ export const create = async (req, res) => {
   } catch (e) {
     res.status(500).json({
       error: e,
+    });
+  }
+};
+
+//전체 카페 리스트 조회
+
+export const readAllCafeList = async (req, res) => { //await 안쓰면 find 하는 도중에 밑에 리스폰스가 미리 작동해서 안담김
+  try {
+    const cafes = await Cafe.find();
+    return res.status(200).json({
+      success: true,
+      cafes,
+    });
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      e,
     });
   }
 };

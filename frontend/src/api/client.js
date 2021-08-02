@@ -6,3 +6,4 @@ const client = axios.create({
 client.defaults.baseURL = "http://localhost:4000/api";
 
 export default client;
+  
