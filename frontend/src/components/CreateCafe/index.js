@@ -1,7 +1,9 @@
 import React from "react";
 import LandingHeader from "../../layout/LandingHeader/index";
+import { useDispatch } from 'react-redux';
 
 function CreatCafe() {
+  const dispatch = useDispatch();
   return (
     <>
       <LandingHeader />

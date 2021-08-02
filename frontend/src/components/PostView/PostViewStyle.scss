@@ -1,74 +1,88 @@
 .post-container {
-    padding: 29px 29px 0;
-    border: 1px solid #ebecef;
-    border-radius: 6px;
-   margin-left: 190px;
+  padding: 29px 29px 0;
+  border: 1px solid #ebecef;
+  border-radius: 6px;
+  margin-left: 215px;
 }
-.post-header{
-    border-bottom: 1px solid #ebecef;
-    padding-bottom: 13px;
+.post-header {
+  border-bottom: 1px solid #ebecef;
+  padding-bottom: 13px;
 }
-.post-title{
-    font-size: 26px;
-    font-weight: 400;
-    padding: 15px;
+.post-title {
+  font-size: 26px;
+  font-weight: 400;
+  padding: 15px;
 }
-.title{
-    margin-top: 3px;
-    margin-right: 12px;
-    font-size: 17px;
-    font-weight: bold;
+.title {
+  margin-top: 3px;
+  margin-right: 12px;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 10px;
+}
+.writer {
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  justify-content: space-between;
+}
+.writer-info {
+  display: flex;
+  align-items: center;
+}
+.mask {
+  display: inline-block;
+  height: 36px;
+  width: 36px;
+  background-color: #efe7f0;
+  margin-right: 3px;
+}
+.nick {
+  margin-right: 6px;
+  font-size: 13px;
+  font-weight: 700;
+}
 
+.contents {
+  padding: 8px;
+  margin: 8px;
+  min-height: 300px;
+  border-bottom: 1px solid #ebecef;
 }
-.writer{
-    display: flex;
-    font-size: 14px;
-    align-items: center;
+.buttons {
+  font-weight: 700;
+  min-width: 46px;
+  height: 36px;
+  margin-left: 10px;
+  padding: 0 12px;
+  font-size: 13px;
+  line-height: 36px;
+  color: #000000;
+  background-color: #eff0f2;
+  border-radius: 6px;
+  text-align: center;
 }
-.mask{
-    display: inline-block;
-    height: 36px;
-    width: 36px;
-    background-color: #efe7f0;
-    margin-right: 3px;
-}
-.nick{
-    margin-right: 6px;
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.contents{
-    padding: 8px;
-    margin: 8px;
-    min-height: 300px;
-    border-bottom: 1px solid #ebecef;
-}
-.buttons{
-    font-weight: 700;
-    min-width: 46px;
-    height: 36px;
-    margin-left: 10px;
-    padding: 0 12px;
-    font-size: 13px;
-    line-height: 36px;
-    color: #000000;
-    background-color: #eff0f2;
-    border-radius: 6px;
-}
-.write-reply{
-        height: 88px;
-        width: 100%;
-        padding: 10px;
-        position: absolute;
-        bottom: 20px;
+.write-reply {
+  height: 88px;
+  width: 100%;
+  padding: 10px;
+  bottom: 20px;
 }
 .reply-box {
-    display: flex;
-    border: 2px solid #ebecef;
-    padding: 15px;
-    input{
-        border: none;
-        flex-basis: 80%;
-    }
+  display: flex;
+  border-bottom: 1px solid #ebecef;
+  padding: 15px;
+  input {
+    border: none;
+    flex-basis: 80%;
   }
+}
+
+.write-reply-box {
+  @extend .reply-box;
+  border: 2px solid #ebecef;
+}
+
+.btm-btn {
+@extend .buttons
+}
