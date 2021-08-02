@@ -1,0 +1,57 @@
+#creat-cafe-container {
+  width: 1080px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 24px;
+}
+
+.title-explain {
+  font-size: 14px;
+  color: #666;
+  padding-top: 4px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgb(136, 136, 136);
+}
+.ele-list {
+  display: flex;
+  align-items: center;
+  .ele {
+    font-weight: bold;
+    padding: 10px; 
+  }
+  input{
+      width: 100%;
+  }
+}
+
+.create-name{
+    flex-basis: 800px;
+}
+.create-route{
+    display: flex;
+    flex-basis:812px;
+}
+.thumb-btns{
+    margin-left: 16px;
+    .thumb-btn{
+        margin: 2px;
+        width: 36px;
+        height: 21px;
+        font-size: 8px;
+        border: 1px solid #d3d3d3;
+        background: #fff;
+    }
+}
+.form-btns{
+    text-align: center;
+    .form-btn{
+        border: 1px solid #d3d3d3;
+        background: #fff;
+        font-size: 13px;
+        color: #222;
+        height: 32px;
+        width: 50px;
+    }
+}
