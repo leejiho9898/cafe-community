@@ -32,5 +32,6 @@ const handleListening = () => {
 
 app.use("/api/user", userRouter);
 app.use("/api/cafe", cafeRouter);
+app.use("/uploads", express.static("uploads"));
 
 app.listen(process.env.PORT, handleListening);

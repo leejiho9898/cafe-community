@@ -1,4 +1,17 @@
 import Cafe from "../models/cafe";
+import multer from "multer"
+import { Request, Response } from "express";
+// multer
+var storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}_${file.originalname}`);
+  },
+});
+var upload = multer({ storage: storage }).single("cafe_img");
+
 
 // 카페생성
 export const create = async (req, res) => {
@@ -58,4 +71,21 @@ export const readAllCafeList = async (req, res) => { //await 안쓰면 find 하�
       e,
     });
   }
+};
+
+
+
+
+// 이미지 업로드
+export const uploadImg = (req, res) => {
+  upload(req, res, (err) => {
+    if (err) {
+      return res.json({ success: false, err });
+    }
+    return res.json({
+      success: true,
+      image: res.req.file.path,
+      fileName: res.req.file.filename,
+    });
+  });
 };

@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 
 function CreatCafe() {
   const user = useSelector((state) => state.user);
+  const [imgURL, setImgURL] = useState('');
   const history = useHistory();
   const [body, setBody] = useState({
     name: "",
@@ -15,8 +16,32 @@ function CreatCafe() {
     route: "",
     manager: user._id,
   });
+
+  const imgUpload = async (e) => {
+    setImgURL(e.target.value);
+    //빈파일이 아닌 경우 함수 진행
+    if (e.target.files !== null) {
+      //FormData 생성
+      const fd = new FormData();
+      //FormData에 key, value 추가하기
+      fd.append('cafe_img', e.target.files[0]);
+      // axios 사용해서 백엔드에게 파일 보내기
+      try {
+        const image = await cafeThumbnailAPI(fd);
+        console.log(image);
+        setImgURL(image);
+        // setMenuImg(image);
+        // dispatch(SetImage({ image }));
+      } catch (e) {
+        alert('이미지 업로드에 실패했습니다.');
+      }
+    }
+  };
+
+
   const { name, thumbnail, route, manager } = body;
 
+  
   const onChange = (e) => {
     const { name, value } = e.target;
 
@@ -85,10 +110,10 @@ function CreatCafe() {
               </div>
               <div className="create-thumb">
                 <input
-                  type="text"
+                  type="file"
                   value={thumbnail}
                   name="thumbnail"
-                  onChange={onChange}
+                  onChange={imgUpload}
                 />
               </div>
               <div className="thumb-btns">
