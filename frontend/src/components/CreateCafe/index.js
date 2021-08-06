@@ -12,7 +12,6 @@ function CreatCafe() {
   const history = useHistory();
   const [body, setBody] = useState({
     name: "",
-    thumbnail: "",
     route: "",
     manager: user._id,
   });
@@ -27,9 +26,9 @@ function CreatCafe() {
       fd.append('cafe_img', e.target.files[0]);
       // axios 사용해서 백엔드에게 파일 보내기
       try {
-        const image = await cafeThumbnailAPI(fd);
+        const image = await client.post('/cafe/uploadImg', fd);;
         console.log(image);
-        setImgURL(image);
+        setImgURL(image.data.image);
         // setMenuImg(image);
         // dispatch(SetImage({ image }));
       } catch (e) {
@@ -54,8 +53,14 @@ function CreatCafe() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    const createformbody={
+      name,
+      route,
+      manager,
+      thumbnail:imgURL,
+    }
     try {
-      const response = await client.post("/cafe/create", body);
+      const response = await client.post("/cafe/create", createformbody);
       console.log(response);
       history.push("/");
     } catch (e) {
@@ -115,10 +120,10 @@ function CreatCafe() {
                   name="thumbnail"
                   onChange={imgUpload}
                 />
+                
               </div>
-              <div className="thumb-btns">
-                <button className="thumb-btn">등록</button>
-                <button className="thumb-btn">삭제</button>
+              <div className="watch-thumb">
+              <img src={`http://localhost:4000/${imgURL}`} alt="" />
               </div>
             </div>
             <div className="form-btns">

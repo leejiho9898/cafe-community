@@ -33,17 +33,17 @@
     display: flex;
     flex-basis:812px;
 }
-.thumb-btns{
-    margin-left: 16px;
-    .thumb-btn{
-        margin: 2px;
-        width: 36px;
-        height: 21px;
-        font-size: 8px;
-        border: 1px solid #d3d3d3;
-        background: #fff;
-    }
-}
+// .thumb-btns{
+//     margin-left: 16px;
+//     .thumb-btn{
+//         margin: 2px;
+//         width: 36px;
+//         height: 21px;
+//         font-size: 8px;
+//         border: 1px solid #d3d3d3;
+//         background: #fff;
+//     }
+// }
 .form-btns{
     text-align: center;
     .form-btn{
@@ -54,4 +54,13 @@
         height: 32px;
         width: 50px;
     }
+}
+
+.watch-thumb{
+  width: 100px;
+  height: 100px;
+  img{
+    width: 100%;
+    border:black 1px solid;
+  }
 }

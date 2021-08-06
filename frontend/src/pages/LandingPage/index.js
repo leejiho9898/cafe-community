@@ -36,7 +36,14 @@ const LandingPage = () => {
             {cafes.map((cafe, index) => (
               <div className="cafe-list">
                 <div className="cafe-object">
-                  <div className="cafe-thumb"></div>
+                  <div className="cafe-thumb">
+                    {cafe.thumbnail && (
+                      <img
+                        src={`http://localhost:4000/${cafe.thumbnail}`}
+                        alt=""
+                      />
+                    )}
+                  </div>
 
                   <a href={`/cafeMain/${cafe.route}`}>{cafe.name}</a>
                 </div>
