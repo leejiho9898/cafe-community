@@ -4,12 +4,17 @@ import { Link } from "react-router-dom";
 import { TiDocumentText, TiMessages } from "react-icons/ti";
 import { BsSearch, BsFileText } from "react-icons/bs";
 import "./MainSideNav.css";
-import PostForm from "./../../components/PostForm/index";
+import { useSelector } from "react-redux";
 
 function MainSideNav() {
-
-
   const [InfoSwich, setInfoSwich] = useState(true);
+  const [boards, setBoards] = useState([]);
+  useEffect(() => {
+    const getBoard = async () => {
+      const response = await client.get("/board/readBoardList/:cafeId");
+      setBoards(response.data.boards);
+    };
+  }, []);
 
   return (
     <>
@@ -43,11 +48,11 @@ function MainSideNav() {
                 <div className="bold">
                   <Link to="">매니저 닉네임</Link>
                 </div>
-                <p className="data-list">
-                  since 2021.07.06
-                </p>
+                <p className="data-list">since 2021.07.06</p>
 
-                <p className="data-list"><Link to={`/management`}>카페관리</Link></p>
+                <p className="data-list">
+                  <Link to={`/management`}>카페관리</Link>
+                </p>
               </div>
             </div>
           ) : (
@@ -96,15 +101,15 @@ function MainSideNav() {
           <input type="text" />
           <BsSearch size="18" />
         </div>
-        <div className="notice-board-list">
 
-          <div className="notice-board">
-            <BsFileText size="18" />
-            <Link to="/board">전체게시판</Link>
+        {boards.map((board, index) => (
+          <div className="notice-board-list">
+            <div className="notice-board">
+              <BsFileText size="18" />
+              <Link to="/board">전체게시판</Link>
+            </div>
           </div>
-
-         
-        </div>
+        ))}
       </div>
     </>
   );
