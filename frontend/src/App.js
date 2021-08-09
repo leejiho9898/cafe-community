@@ -16,7 +16,7 @@ function App() {
         <Route exact path="/" component={LandingPage} />
         <Route path="/createcafe" component={CreateCafe} />
         <Route path="/cafeMain/:cafe?" component={CafeMain} />
-        <Route path="/management/:cafe?" component={CafeManagement} />
+        <Route path="/management" component={CafeManagement} />
         <Route path="/join" component={JoinForm} />
         <Route path="/signup" exact component={Signup} />
         <Route path="/login" exact component={Login} />

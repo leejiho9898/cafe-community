@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import client from "api/client";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { TiDocumentText, TiMessages } from "react-icons/ti";
 import { BsSearch, BsFileText } from "react-icons/bs";
 import "./MainSideNav.css";
@@ -9,6 +9,9 @@ import { useSelector } from "react-redux";
 function MainSideNav() {
   const [InfoSwich, setInfoSwich] = useState(true);
   const [boards, setBoards] = useState([]);
+  const params = useParams();
+  const route = params.cafe;
+  console.log(params);
   useEffect(() => {
     const getBoard = async () => {
       const response = await client.get(
@@ -109,7 +112,7 @@ function MainSideNav() {
           <div className="notice-board-list">
             <div className="notice-board">
               <BsFileText size="18" />
-              <Link to="/cafeMain//board">{board.name}</Link>
+              <Link to={`/cafeMain/${route}/board`}>{board.name}</Link>
             </div>
           </div>
         ))}

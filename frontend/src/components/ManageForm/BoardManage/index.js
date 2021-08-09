@@ -3,7 +3,7 @@ import "./style.scss"
 function BoardManage() {
     return (
         <div id="boardManage-container">
-            asdasdasdasdasasdasdsddadddddddddddd
+            asdasdasdasdasasdasdsddaddddddddddddasd
         </div>
     )
 }
