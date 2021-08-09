@@ -3,8 +3,10 @@ import mongoose from "mongoose";
 import "dotenv/config";
 import userRouter from "./routers/userRouter";
 import cafeRouter from "./routers/cafeRouter";
+import boardRourer from "./routers/boardRouter";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+
 const app = express();
 app.use(
   cors({
@@ -33,5 +35,6 @@ const handleListening = () => {
 app.use("/api/user", userRouter);
 app.use("/api/cafe", cafeRouter);
 app.use("/uploads", express.static("uploads"));
+app.use("/api/board", boardRourer);
 
 app.listen(process.env.PORT, handleListening);

@@ -97,54 +97,13 @@ function MainSideNav() {
           <BsSearch size="18" />
         </div>
         <div className="notice-board-list">
+
           <div className="notice-board">
             <BsFileText size="18" />
             <Link to="/board">전체게시판</Link>
           </div>
-          <div className="notice-board">
-            <BsFileText size="18" />
-            <Link to={`/cafeMain/board`}>잡담게시판</Link>
-          </div>
-          <div className="notice-board">
-            <BsFileText size="18" />
-            <Link to="/cafeMain/board">공지게시판</Link>
-          </div>
-          <div className="notice-board">
-            <BsFileText size="18" />
-            <Link to="/cafeMain/board">영화게시판</Link>
-          </div>
-          <div className="notice-board">
-            <BsFileText size="18" />
-            <Link to="/cafeMain/board">고민게시판</Link>
-          </div>
-          <div className="notice-board">
-            <BsFileText size="18" />
-            <Link to="/cafeMain/board">포토게시판</Link>
-          </div>
-          <div className="notice-board">
-            <BsFileText size="18" />
-            <Link to="/cafeMain/board">유머게시판</Link>
-          </div>
-          <div className="notice-board">
-            <BsFileText size="18" />
-            <Link to="/cafeMain/board">뉴스게시판</Link>
-          </div>
-          <div className="notice-board">
-            <BsFileText size="18" />
-            <Link to="/cafeMain/board">패션게시판</Link>
-          </div>
-          <div className="notice-board">
-            <BsFileText size="18" />
-            <Link to="/cafeMain/board">근황게시판</Link>
-          </div>
-          <div className="notice-board">
-            <BsFileText size="18" />
-            <Link to="/cafeMain/board">게임게시판</Link>
-          </div>
-          <div className="notice-board">
-            <BsFileText size="18" />
-            <Link to="/cafeMain/board">영화 추천 게시판</Link>
-          </div>
+
+         
         </div>
       </div>
     </>
