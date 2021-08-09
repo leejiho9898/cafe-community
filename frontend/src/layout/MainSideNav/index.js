@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
+import client from "api/client";
 import { Link } from "react-router-dom";
 import { TiDocumentText, TiMessages } from "react-icons/ti";
 import { BsSearch, BsFileText } from "react-icons/bs";
@@ -8,7 +8,9 @@ import PostForm from "./../../components/PostForm/index";
 
 function MainSideNav() {
 
+
   const [InfoSwich, setInfoSwich] = useState(true);
+
   return (
     <>
       <div className="sidenav-container">
@@ -42,9 +44,10 @@ function MainSideNav() {
                   <Link to="">매니저 닉네임</Link>
                 </div>
                 <p className="data-list">
-                  <Link to="">since 2021.07.06</Link>
+                  since 2021.07.06
                 </p>
-                <p className="data-list">카페소개</p>
+
+                <p className="data-list"><Link to={`/management`}>카페관리</Link></p>
               </div>
             </div>
           ) : (

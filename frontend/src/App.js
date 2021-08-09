@@ -7,6 +7,7 @@ import PostForm from "components/PostForm";
 import Signup from "pages/Signup";
 import Login from "pages/Login";
 import CreateCafe from "components/CreateCafe";
+import CafeManagement from "pages/CafeManagement";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/" component={LandingPage} />
         <Route path="/createcafe" component={CreateCafe} />
         <Route path="/cafeMain/:cafe?" component={CafeMain} />
+        <Route path="/management/:cafe?" component={CafeManagement} />
         <Route path="/join" component={JoinForm} />
         <Route path="/signup" exact component={Signup} />
         <Route path="/login" exact component={Login} />
