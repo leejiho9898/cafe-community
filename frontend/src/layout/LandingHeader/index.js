@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
 import logo from "static/logo.png";
 import { BsSearch } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { UserStateEmpty } from "modules/user";
+import client from "api/client";
 
 const LandingHeader = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const user = useSelector((state) => state.user);
+  const logout = async () => {
+    try {
+      const response = await client.post("/user/logout");
+      sessionStorage.removeItem("user");
+      dispatch(UserStateEmpty());
+      history.push("/");
+    } catch (error) {
+      alert("로그아웃에 실패 했습니다.");
+    }
+  };
+  const [islogin, setislogin] = useState(false);
   return (
     <div id="LandingHeader">
       <div id="header">
@@ -30,12 +47,23 @@ const LandingHeader = () => {
         <div className="user">
           <div className="user-border">
             <ul>
-              <li>
-                <Link to="login">로그인</Link>
-              </li>
-              <li>
-                <Link to="signup">회원가입</Link>
-              </li>
+              {user.name ? (
+                <div>
+                  <li>hi, {user.name}!</li>
+                  <li>
+                    <Link onClick={logout}>로그아웃</Link>
+                  </li>
+                </div>
+              ) : (
+                <div>
+                  <li>
+                    <Link to="login">로그인</Link>
+                  </li>
+                  <li>
+                    <Link to="signup">회원가입</Link>
+                  </li>
+                </div>
+              )}
             </ul>
           </div>
         </div>
