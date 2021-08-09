@@ -28,8 +28,8 @@ function ManagementNav() {
             멤버, 스탭 관리
           </div>
           <div className="contents-list">
-            <div>전체 멤버 관리</div>
-            <div>등급 관리</div>
+            <div><Link>전체 멤버 관리</Link></div>
+            <div><Link>등급 관리</Link></div>
           </div>
         </div>
 

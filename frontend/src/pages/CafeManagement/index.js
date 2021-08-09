@@ -3,6 +3,8 @@ import MainHeader from "layout/MainHeader";
 import "./style.scss";
 import React from "react";
 import ManagementNav from "./../../layout/ManagementNav/index";
+import { Route } from "react-router-dom";
+import BoardManage from "components/ManageForm/BoardManage/index";
 
 function CafeManagement() {
   return (
@@ -11,7 +13,7 @@ function CafeManagement() {
       <MainHeader />
       <div id="management-container">
         <ManagementNav />
-        <div className="title">카페 관리</div>
+        <Route path="/board" component={BoardManage} />
         <div></div>
       </div>
     </>

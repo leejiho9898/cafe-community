@@ -94,34 +94,34 @@ body a:hover {
 }
 
 .cafe-write-btn {
-    height: 35px;
-    text-align: center;
-    line-height: 35px;
-    background-color: #666;
-    color: white;
-    margin-bottom: 5px;
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+  background-color: #666;
+  color: white;
+  margin-bottom: 5px;
 }
 .cafe-chat-btn {
-    height: 35px;
-    text-align: center;
-    line-height: 35px;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid gray;
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid gray;
 }
 
-.search-bar{
-    margin-top: 5px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.search-bar {
+  margin-top: 5px;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgb(26, 26, 26);
 }
-.notice-board-list{
-    border-top: 1px solid rgb(26, 26, 26);
-    border-bottom: 1px solid rgb(26, 26, 26);
+.notice-board-list {
+  border-bottom: 1px solid rgb(26, 26, 26);
 }
-.notice-board{
-    display: flex;
-    align-items: center;
-    padding: 5px;
+.notice-board {
+  display: flex;
+  align-items: center;
+  padding: 5px;
 }

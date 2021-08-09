@@ -1,10 +1,9 @@
 import React from 'react'
-
+import "./style.scss"
 function BoardManage() {
     return (
-        <div className="BoardManage">
-            
-            
+        <div id="boardManage-container">
+            asdasdasdasdasasdasdsddadddddddddddd
         </div>
     )
 }

@@ -11,9 +11,12 @@ function MainSideNav() {
   const [boards, setBoards] = useState([]);
   useEffect(() => {
     const getBoard = async () => {
-      const response = await client.get("/board/readBoardList/:cafeId");
+      const response = await client.get(
+        `/board/readBoardList/610cd0af7046021dac55d9f8`
+      );
       setBoards(response.data.boards);
     };
+    getBoard();
   }, []);
 
   return (
@@ -41,7 +44,7 @@ function MainSideNav() {
             </p>
           </div>
           {InfoSwich === true ? (
-            <div className="cafe-info-data">
+            <div className="cafe-info-data" key="1">
               <div className="cafe-thumb"></div>
               <div className="manager">
                 <div className="ico-manager">매니저</div>
@@ -106,7 +109,7 @@ function MainSideNav() {
           <div className="notice-board-list">
             <div className="notice-board">
               <BsFileText size="18" />
-              <Link to="/board">전체게시판</Link>
+              <Link to="/cafeMain//board">{board.name}</Link>
             </div>
           </div>
         ))}
