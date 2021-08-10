@@ -1,0 +1,42 @@
+#login-container {
+  width: 1080px;
+  margin: 0 auto;
+  text-align: center;
+}
+.title {
+  margin-top: 100px;
+}
+
+form {
+  margin-top: 40px;
+}
+
+.ele-box {
+  margin-bottom: 40px;
+  input {
+    font-size: 14px;
+    line-height: 35px;
+    width: 500px;
+    height: 20px;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+  }
+}
+
+.login-btn {
+cursor: pointer;
+  font-weight: 700;
+  width: 160px;
+  height: 54px;
+  margin: 0 auto;
+  padding: 0 12px;
+  font-size: 15px;
+  line-height: 36px;
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 1px;
+  &:hover {
+    color: #ffffff;
+    background-color: #727272;
+  }
+}

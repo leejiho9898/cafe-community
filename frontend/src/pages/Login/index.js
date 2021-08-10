@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import "./style.scss";
 import client from "./../../api/client";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SetUser } from "modules/user";
+import LandingHeader from "layout/LandingHeader";
 
 const Login = () => {
   const user = useSelector((state) => state.user);
@@ -52,25 +54,36 @@ const Login = () => {
   }, [history, user]);
 
   return (
-    <div>
-      <form action="" onSubmit={onSubmit}>
-        <input
-          type="text"
-          value={id}
-          name="id"
-          onChange={onChange}
-          placeholder="id"
-        />
-        <input
-          type="password"
-          value={password}
-          name="password"
-          onChange={onChange}
-          placeholder="password"
-        />
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <>
+      <LandingHeader />
+
+      <div id="login-container">
+        <div className="title">로그인</div>
+        <form onSubmit={onSubmit}>
+          <div className="ele-box">
+            {/* <div className="ele-tit">아이디</div> */}
+            <input
+              type="text"
+              value={id}
+              name="id"
+              onChange={onChange}
+              placeholder="id"
+            />
+          </div>
+          <div className="ele-box">
+            {/* <div className="ele-tit">비밀번호</div> */}
+            <input
+              type="password"
+              value={password}
+              name="password"
+              onChange={onChange}
+              placeholder="password"
+            />
+          </div>
+          <button type="submit" className="login-btn">Login</button>
+        </form>
+      </div>
+    </>
   );
 };
 
