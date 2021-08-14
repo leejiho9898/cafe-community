@@ -5,6 +5,7 @@ import { TiDocumentText, TiMessages } from "react-icons/ti";
 import { BsSearch, BsFileText } from "react-icons/bs";
 import "./MainSideNav.css";
 import { useDispatch, useSelector } from "react-redux";
+import { SetCafe } from "modules/cafe";
 
 function MainSideNav() {
   const cafeInfo = useSelector((state) => state.cafe);
@@ -18,19 +19,25 @@ function MainSideNav() {
   useEffect(() => {
     const getCafe = async () => {
       const response = await client.get(`/cafe/cafeInfo/${route}`);
-      console.log(response);
+      dispatch(SetCafe(response.data.cafeInfo))
+
     };
 
-    // const getBoard = async () => {
-    //   const response = await client.get(
-    //     `/board/readBoardList/610cd0af7046021dac55d9f8`
-    //   );
-    //   setBoards(response.data.boards);
-    // };
+
+    const getBoard = async () => {
+
+      const response = await client.get(
+        `/board/readBoardList/610cd0af7046021dac55d9f8`
+      );
+      setBoards(response.data.boards);
+ 
+    };
     getCafe();
-    // getBoard();
+    
+    getBoard();
 
   }, [route,dispatch]);
+
 
   return (
     <>
@@ -62,7 +69,7 @@ function MainSideNav() {
               <div className="manager">
                 <div className="ico-manager">매니저</div>
                 <div className="bold">
-                  <Link to="">매니저 닉네임</Link>
+                  <Link to="">{cafeInfo.manager.name}</Link>
                 </div>
                 <p className="data-list">since 2021.07.06</p>
 

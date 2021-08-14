@@ -92,7 +92,7 @@ export const uploadImg = (req, res) => {
 export const cafeInfo = async (req, res) => {
   const { route } = req.params;
   try {
-    let cafeInfo = Cafe.findOne({ route }).populate("manager", {
+    let cafeInfo = await Cafe.findOne({ route }).populate("manager", {
       name: true,
       email: true,
     });
@@ -102,11 +102,6 @@ export const cafeInfo = async (req, res) => {
         message: "해당 주소(route) 를 가진 카페가 없습니다.",
       });
     }
-
-    // const member = cafeInfo.members.some(
-
-    // )
-
     return res.status(200).json({
       success:true,
       cafeInfo,
