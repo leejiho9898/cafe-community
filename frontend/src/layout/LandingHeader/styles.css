@@ -57,6 +57,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   }
   .search-box .search-ico span {
     vertical-align: middle;

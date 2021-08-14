@@ -4,23 +4,33 @@ import { Link, useParams } from "react-router-dom";
 import { TiDocumentText, TiMessages } from "react-icons/ti";
 import { BsSearch, BsFileText } from "react-icons/bs";
 import "./MainSideNav.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function MainSideNav() {
+  const cafeInfo = useSelector((state) => state.cafe);
+  const dispatch = useDispatch();
+
   const [InfoSwich, setInfoSwich] = useState(true);
   const [boards, setBoards] = useState([]);
   const params = useParams();
   const route = params.cafe;
-  console.log(params);
+
   useEffect(() => {
-    const getBoard = async () => {
-      const response = await client.get(
-        `/board/readBoardList/610cd0af7046021dac55d9f8`
-      );
-      setBoards(response.data.boards);
+    const getCafe = async () => {
+      const response = await client.get(`/cafe/cafeInfo/${route}`);
+      console.log(response);
     };
-    getBoard();
-  }, []);
+
+    // const getBoard = async () => {
+    //   const response = await client.get(
+    //     `/board/readBoardList/610cd0af7046021dac55d9f8`
+    //   );
+    //   setBoards(response.data.boards);
+    // };
+    getCafe();
+    // getBoard();
+
+  }, [route,dispatch]);
 
   return (
     <>

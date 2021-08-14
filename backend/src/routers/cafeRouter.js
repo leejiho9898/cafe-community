@@ -4,6 +4,6 @@ const router = express.Router();
 
 router.post("/create", cafeCtrl.create);
 router.post("/uploadImg", cafeCtrl.uploadImg);
-router.get("/readAllCafeList",cafeCtrl.readAllCafeList);
-
+router.get("/readAllCafeList", cafeCtrl.readAllCafeList);
+router.get("/cafeInfo/:route", cafeCtrl.cafeInfo);
 export default router;

@@ -21,7 +21,6 @@ const LandingHeader = () => {
       alert("로그아웃에 실패 했습니다.");
     }
   };
-  const [islogin, setislogin] = useState(false);
   return (
     <div id="LandingHeader">
       <div id="header">

@@ -1,5 +1,5 @@
 import Cafe from "../models/cafe";
-import multer from "multer"
+import multer from "multer";
 import { Request, Response } from "express";
 // multer
 var storage = multer.diskStorage({
@@ -11,7 +11,6 @@ var storage = multer.diskStorage({
   },
 });
 var upload = multer({ storage: storage }).single("cafe_img");
-
 
 // 카페생성
 export const create = async (req, res) => {
@@ -58,7 +57,8 @@ export const create = async (req, res) => {
 
 //전체 카페 리스트 조회
 
-export const readAllCafeList = async (req, res) => { //await 안쓰면 find 하는 도중에 밑에 리스폰스가 미리 작동해서 안담김
+export const readAllCafeList = async (req, res) => {
+  //await 안쓰면 find 하는 도중에 밑에 리스폰스가 미리 작동해서 안담김
   try {
     const cafes = await Cafe.find();
     return res.status(200).json({
@@ -73,9 +73,6 @@ export const readAllCafeList = async (req, res) => { //await 안쓰면 find 하�
   }
 };
 
-
-
-
 // 이미지 업로드
 export const uploadImg = (req, res) => {
   upload(req, res, (err) => {
@@ -88,4 +85,36 @@ export const uploadImg = (req, res) => {
       fileName: res.req.file.filename,
     });
   });
+};
+
+//카페 상세 정보 조회
+
+export const cafeInfo = async (req, res) => {
+  const { route } = req.params;
+  try {
+    let cafeInfo = Cafe.findOne({ route }).populate("manager", {
+      name: true,
+      email: true,
+    });
+    if (!cafeInfo) {
+      return res.status(400).json({
+        success: false,
+        message: "해당 주소(route) 를 가진 카페가 없습니다.",
+      });
+    }
+
+    // const member = cafeInfo.members.some(
+
+    // )
+
+    return res.status(200).json({
+      success:true,
+      cafeInfo,
+    })
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      e,
+    });
+  }
 };
