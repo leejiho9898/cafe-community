@@ -5,7 +5,7 @@ import { TiDocumentText, TiMessages } from "react-icons/ti";
 import { BsSearch, BsFileText } from "react-icons/bs";
 import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
-import { SetCafe } from "modules/cafe";
+import cafe, { SetCafe } from "modules/cafe";
 import BorderNav from "../BorderNav";
 
 function CafeInfoNav() {
@@ -61,7 +61,7 @@ function CafeInfoNav() {
                 <p className="data-list">since 2021.07.06</p>
 
                 <p className="data-list">
-                  <Link to={`/management`}>카페관리</Link>
+                  <Link to={`/management/${cafeInfo.route}`}>카페관리</Link>
                 </p>
               </div>
             </div>

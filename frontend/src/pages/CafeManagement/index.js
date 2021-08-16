@@ -13,7 +13,7 @@ function CafeManagement() {
       <MainHeader />
       <div id="management-container">
         <ManagementNav />
-        <Route exact path="/management/board" component={BoardManage} />
+        <Route exact path="/management/:cafe/board" component={BoardManage} />
         <div></div>
       </div>
     </>

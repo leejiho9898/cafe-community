@@ -2,8 +2,11 @@ import React from "react";
 import "./style.scss";
 import { TiDocumentText } from "react-icons/ti";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import cafe from "modules/cafe";
 
 function ManagementNav() {
+  const cafeInfo = useSelector((state) => state.cafe)
   return (
     <div id="ManagementNav-container">
       <div className="tit-menu">
@@ -14,10 +17,10 @@ function ManagementNav() {
           </div>
           <div className="contents-list">
             <div>
-              <Link to="/management/board">게시판 관리</Link>
+              <Link to={`/management/${cafeInfo.route}/board`}>게시판 관리</Link>
             </div>
             <div>
-              <Link to="/management/post">글 관리</Link>
+              <Link to={`/management/${cafeInfo.route}/post`}>글 관리</Link>
             </div>
           </div>
         </div>
