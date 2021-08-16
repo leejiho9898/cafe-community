@@ -27,7 +27,10 @@ const cafe = createSlice({
     //   state.manager = manager;
     //   state.members = members;
     // },
+    
+  
   },
+  
 });
 
 export const { SetCafe } = cafe.actions;

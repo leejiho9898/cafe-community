@@ -3,7 +3,8 @@ import * as boardCtrl from "../controllers/boardController";
 
 const router = express.Router();
 
-router.post("/create/:cafeId", boardCtrl.create); // 게시판 생성
-router.get("/readBoardList/:cafeId", boardCtrl.readBoardList); //게시판 불러오기
-router.delete("/delete/:cafeId/:boardId", boardCtrl.deleteBoard); // 게시판 삭제
+router.post("/createBoard/:cafeId", boardCtrl.create); // 게시판 생성
+router.get("/readBoardList/:cafeId", boardCtrl.readBoardList); //게시판 읽기
+router.patch("/modifyBoard/:cafeId", boardCtrl.modifyBoard); //게시판 수정
+router.delete("/deleteBoard/:cafeId/:boardId", boardCtrl.deleteBoard); // 게시판 삭제
 export default router;

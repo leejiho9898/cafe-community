@@ -90,11 +90,11 @@ export const uploadImg = (req, res) => {
 //카페 상세 정보 조회
 
 export const cafeInfo = async (req, res) => {
-  const { route } = req.params;
+  const { route, userId } = req.params;
   try {
     let cafeInfo = await Cafe.findOne({ route }).populate("manager", {
       name: true,
-      email: true,
+      id: true,
     });
     if (!cafeInfo) {
       return res.status(400).json({
@@ -102,10 +102,22 @@ export const cafeInfo = async (req, res) => {
         message: "해당 주소(route) 를 가진 카페가 없습니다.",
       });
     }
+    const member = cafeInfo.members.some(
+      // 현재 접속한 유저가 카페 맴버인지 확인
+      (m) => m._id.toString() === userId
+    );
+
+
+    // const cafMmember = await Cafe.findOne({
+    //   members.member._id:userId;
+    // });
+
+    
     return res.status(200).json({
-      success:true,
+      success: true,
       cafeInfo,
-    })
+      member,
+    });
   } catch (e) {
     res.status(500).json({
       success: false,

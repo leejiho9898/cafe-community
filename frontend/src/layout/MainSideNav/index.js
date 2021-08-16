@@ -9,18 +9,24 @@ import { SetCafe } from "modules/cafe";
 
 function MainSideNav() {
   const cafeInfo = useSelector((state) => state.cafe);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
+  const userInfo = sessionStorage.getItem(user)
+  const [ismember, setIsmember] = useState()
   const [InfoSwich, setInfoSwich] = useState(true);
   const [boards, setBoards] = useState([]);
   const params = useParams();
   const route = params.cafe;
 
+
+
+
   useEffect(() => {
     const getCafe = async () => {
-      const response = await client.get(`/cafe/cafeInfo/${route}`);
+      const response = await client.get(`/cafe/cafeInfo/${route}/${user._id}`);
+      // console.log(user._id)
       dispatch(SetCafe(response.data.cafeInfo))
-
+      console.log(response.data.member)
     };
 
 
