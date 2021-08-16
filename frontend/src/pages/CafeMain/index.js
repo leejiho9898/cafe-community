@@ -3,7 +3,7 @@ import { Route, Link, Switch } from "react-router-dom";
 import Footer from "layout/Footer";
 import LandingPage from "../LandingPage";
 import MainHeader from "./../../layout/MainHeader/index";
-import MainSideNav from "./../../layout/MainSideNav/index";
+import MainSideNav from "../../layout/MainSideNav/CafeInfoNav/index";
 import "./CafeMainStyle.css";
 import PostList from "./../../components/PostList/index";
 import PostForm from "components/PostForm";

@@ -3,47 +3,28 @@ import client from "api/client";
 import { Link, useParams } from "react-router-dom";
 import { TiDocumentText, TiMessages } from "react-icons/ti";
 import { BsSearch, BsFileText } from "react-icons/bs";
-import "./MainSideNav.css";
+import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { SetCafe } from "modules/cafe";
+import BorderNav from "../BorderNav";
 
-function MainSideNav() {
+function CafeInfoNav() {
   const cafeInfo = useSelector((state) => state.cafe);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const userInfo = sessionStorage.getItem(user)
-  const [ismember, setIsmember] = useState()
   const [InfoSwich, setInfoSwich] = useState(true);
-  const [boards, setBoards] = useState([]);
   const params = useParams();
   const route = params.cafe;
-
-
-
 
   useEffect(() => {
     const getCafe = async () => {
       const response = await client.get(`/cafe/cafeInfo/${route}/${user._id}`);
       // console.log(user._id)
-      dispatch(SetCafe(response.data.cafeInfo))
-      console.log(response.data.member)
-    };
-
-
-    const getBoard = async () => {
-
-      const response = await client.get(
-        `/board/readBoardList/610cd0af7046021dac55d9f8`
-      );
-      setBoards(response.data.boards);
- 
+      dispatch(SetCafe(response.data.cafeInfo));
+      console.log(response.data);
     };
     getCafe();
-    
-    getBoard();
-
-  }, [route,dispatch]);
-
+  }, [route, dispatch]);
 
   return (
     <>
@@ -130,18 +111,10 @@ function MainSideNav() {
           <input type="text" />
           <BsSearch size="18" />
         </div>
-
-        {boards.map((board, index) => (
-          <div className="notice-board-list">
-            <div className="notice-board">
-              <BsFileText size="18" />
-              <Link to={`/cafeMain/${route}/board`}>{board.name}</Link>
-            </div>
-          </div>
-        ))}
+        <BorderNav />
       </div>
     </>
   );
 }
 
-export default MainSideNav;
+export default CafeInfoNav;
