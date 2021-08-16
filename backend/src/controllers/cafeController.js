@@ -1,6 +1,7 @@
 import Cafe from "../models/cafe";
 import multer from "multer";
 import { Request, Response } from "express";
+import User from "./../models/user";
 // multer
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -73,6 +74,22 @@ export const readAllCafeList = async (req, res) => {
   }
 };
 
+export const readMyCafeList = async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const user = await User.findOne({ _id: userId }).populate("cafes");
+    return res.status(200).json({
+      success: true,
+      cafes: user.cafes,
+    });
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      e,
+    });
+  }
+};
+
 // 이미지 업로드
 export const uploadImg = (req, res) => {
   upload(req, res, (err) => {
@@ -102,17 +119,16 @@ export const cafeInfo = async (req, res) => {
         message: "해당 주소(route) 를 가진 카페가 없습니다.",
       });
     }
+    console.log(cafeInfo.members);
     const member = cafeInfo.members.some(
       // 현재 접속한 유저가 카페 맴버인지 확인
       (m) => m._id.toString() === userId
     );
 
-
     // const cafMmember = await Cafe.findOne({
     //   members.member._id:userId;
     // });
 
-    
     return res.status(200).json({
       success: true,
       cafeInfo,
@@ -120,6 +136,35 @@ export const cafeInfo = async (req, res) => {
     });
   } catch (e) {
     res.status(500).json({
+      success: false,
+      e,
+    });
+  }
+};
+
+//how to login
+
+export const cafeJoin = async (req, res) => {
+  const { cafeId, userId } = req.body;
+
+  try {
+    let cafe = Cafe.findOne({
+      _id: cafeId,
+    });
+    cafe.members.push(userId);
+    await cafe.save();
+
+    let user = User.findOne({
+      _id: userId,
+    });
+    user.cafes.push(cafeId);
+    await user.save();
+
+    return res.status(200).json({
+      success: true,
+    });
+  } catch (e) {
+    return res.status(500).json({
       success: false,
       e,
     });
