@@ -1,3 +1,68 @@
+.flex{
+  display: flex;
+}
 #boardManage-container {
   width: 900px;
+  margin: 0 auto;
+  .title {
+    margin-top: 30px;
+  }
+}
+.board-manage-div {
+  display: flex;
+  .manage-board-ele {
+    margin-left: 15px;
+    width: 300px;
+    border: 1px black solid;
+  }
+}
+
+.manage-board-title {
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.manage-board-ele {
+  font-size: 17px;
+  .board1 {
+    padding: 5px;
+  }
+}
+
+.manage-board-action {
+  margin-left: 15px;
+  width: 300px;
+  border: 1px black solid;
+  margin-top: 8px;
+}
+.action-ele {
+  padding: 5px;
+  font-size: 18px;
+}
+.action-input {
+  margin: 5px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+.del-board-box {
+  margin-left: 50px;
+  margin: 10px;
+  text-align: center;
+  .del-board {
+    font-weight: 700;
+    width: 80px;
+    height: 30px;
+    font-size: 13px;
+    line-height: 30px;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 1px;
+    &:hover {
+      color: #ffffff;
+      background-color: #727272;
+    }
+  }
 }

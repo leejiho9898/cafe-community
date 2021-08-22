@@ -10,12 +10,13 @@ function CafeManagement() {
   return (
     <>
       <LandingHeader />
+
       <MainHeader />
+
       <div id="management-container">
         <ManagementNav />
-        <Route exact path="/management/:cafe/board" component={BoardManage} />
-        <div></div>
       </div>
+      <Route exact path="/management/:cafe/board/:boardId?" component={BoardManage} />
     </>
   );
 }

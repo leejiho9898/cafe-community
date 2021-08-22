@@ -13,6 +13,9 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage }).single("cafe_img");
 
+
+
+
 // 카페생성
 export const create = async (req, res) => {
   const { name, thumbnail, route, manager } = req.body;
