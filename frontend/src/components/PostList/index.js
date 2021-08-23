@@ -1,12 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./PostListStyle.css";
 function PostList() {
+  const params = useParams();
+  const boardname = params.boardname;
   return (
     <>
       <div className="list-container">
-        <div className="board-tit">임시 게시판</div>
-        <div className="tit-explanation">임시로 만든 게시판입니다.</div>
+        <div className="board-tit">{boardname}</div>
+        <div className="tit-explanation">{boardname}입니다.</div>
         <div className="list-handler">
           <div>11,130개의 글</div>
           <div>

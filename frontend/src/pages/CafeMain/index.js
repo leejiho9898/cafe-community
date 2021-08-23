@@ -11,22 +11,31 @@ import JoinForm from "components/JoinForm/JoinForm";
 import PostView from "components/PostView";
 import LandingHeader from "layout/LandingHeader";
 
-const CafeMain = ({ match }) => {
-  const board = match.params.id;
+const CafeMain = () => {
+
+
 
   return (
     <>
       <div id="container">
-        <LandingHeader/>
+        <LandingHeader />
         <MainHeader />
         <div className="main">
           <MainSideNav />
           <div className="content">
             <Switch>
-              <Route path="/cafeMain/:id/join" exact component={JoinForm} />
-              <Route path="/cafeMain/:id/write" exact component={PostForm} />
-              <Route path="/cafeMain/:id/board/:boardid/post/:postid?" exact component={PostView} />
-              <Route path="/cafeMain/:id/board/:boardid?" exact component={PostList} />
+              <Route path="/cafeMain/:cafe/join" exact component={JoinForm} />
+              <Route path="/cafeMain/:cafe/write" exact component={PostForm} />
+              <Route
+                path="/cafeMain/:cafe/board/:boardname?/post/:postid?"
+                exact
+                component={PostView}
+              />
+              <Route
+                path="/cafeMain/:cafe/board/:boardname?"
+                exact
+                component={PostList}
+              />
             </Switch>
           </div>
         </div>

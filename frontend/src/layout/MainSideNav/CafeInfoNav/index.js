@@ -6,7 +6,7 @@ import { BsSearch, BsFileText } from "react-icons/bs";
 import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
 import cafe, { SetCafe } from "modules/cafe";
-import BorderNav from "../BorderNav";
+import BorderNav from "../BoardNav";
 
 function CafeInfoNav() {
   const cafeInfo = useSelector((state) => state.cafe);

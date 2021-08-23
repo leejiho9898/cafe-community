@@ -4,7 +4,9 @@ import { BsFileText } from "react-icons/bs";
 import { useEffect } from "react";
 import client from "api/client";
 import { useSelector } from "react-redux";
-function BorderNav() {
+function BoardNav() {
+
+
   const [boards, setBoards] = useState([]);
   const cafeInfo = useSelector((state) => state.cafe);
   const params = useParams();
@@ -22,10 +24,10 @@ function BorderNav() {
   return (
     <div>
       {boards.map((board, index) => (
-        <div className="notice-board-list">
+        <div className="notice-board-list" key={index}>
           <div className="notice-board">
             <BsFileText size="18" />
-            <Link to={`/cafeMain/${route}/board`}>{board.name}</Link>
+            <Link to={`/cafeMain/${route}/board/${board.name}`}>{board.name}</Link>
           </div>
         </div>
       ))}
@@ -33,4 +35,4 @@ function BorderNav() {
   );
 }
 
-export default BorderNav;
+export default BoardNav;
