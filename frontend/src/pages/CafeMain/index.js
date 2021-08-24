@@ -19,7 +19,7 @@ const CafeMain = () => {
     <>
       <div id="container">
         <LandingHeader />
-        <MainHeader />
+        {/* <MainHeader /> */}
         <div className="main">
           <MainSideNav />
           <div className="content">
@@ -27,12 +27,12 @@ const CafeMain = () => {
               <Route path="/cafeMain/:cafe/join" exact component={JoinForm} />
               <Route path="/cafeMain/:cafe/write" exact component={PostForm} />
               <Route
-                path="/cafeMain/:cafe/board/:boardname?/post/:postid?"
+                path="/cafeMain/:cafe/board/:boardId?/post/:postid?"
                 exact
                 component={PostView}
               />
               <Route
-                path="/cafeMain/:cafe/board/:boardname?"
+                path="/cafeMain/:cafe/board/:boardId?"
                 exact
                 component={PostList}
               />

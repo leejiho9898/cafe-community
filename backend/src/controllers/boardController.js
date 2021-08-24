@@ -51,6 +51,25 @@ export const readBoardList = async (req, res) => {
   }
 };
 
+//게시판 불러오기
+export const readBoard = async (req, res) => {
+  const { boardId } = req.params;
+  try {
+    const board = await Board.findById({
+      _id: boardId,
+    });
+    return res.status(200).json({
+      success: true,
+      board,
+    });
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      e,
+    });
+  }
+};
+
 //게시판 수정
 export const modifyBoard = async (req, res) => {
   const { boardId, name } = req.body;
@@ -63,9 +82,9 @@ export const modifyBoard = async (req, res) => {
     );
     if (!board) {
       return res.status(400).json({
-        success:false,
-        message:"게시판이 존재하지 않습니다.",
-      })
+        success: false,
+        message: "게시판이 존재하지 않습니다.",
+      });
     }
 
     const boards = await Board.find({ cafe: cafeId });

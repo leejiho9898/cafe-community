@@ -27,7 +27,7 @@ function BoardNav() {
         <div className="notice-board-list" key={index}>
           <div className="notice-board">
             <BsFileText size="18" />
-            <Link to={`/cafeMain/${route}/board/${board.name}`}>{board.name}</Link>
+            <Link to={`/cafeMain/${route}/board/${board._id}` } >{board.name}</Link>
           </div>
         </div>
       ))}

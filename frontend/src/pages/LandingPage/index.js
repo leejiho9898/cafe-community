@@ -34,7 +34,7 @@ const LandingPage = () => {
           </div>
           <div id="cafe-container">
             {cafes.map((cafe, index) => (
-              <div className="cafe-list">
+              <div key={index} className="cafe-list">
                 <div className="cafe-object">
                   <div className="cafe-thumb">
                     {cafe.thumbnail && (

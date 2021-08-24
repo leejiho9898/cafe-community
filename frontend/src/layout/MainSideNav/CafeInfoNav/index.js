@@ -101,11 +101,13 @@ function CafeInfoNav() {
             </div>
           )}
         </div>
-        <div className="cafe-write-btn blk">
-          <Link to="/cafeMain/write">카페 글쓰기</Link>
-        </div>
-        <div className="cafe-chat-btn">
-          <Link to="">채팅</Link>
+        <div className="cafe-btns">
+          <div className="cafe-write-btn blk">
+            <Link to="/cafeMain/write">카페 글쓰기</Link>
+          </div>
+          <div className="cafe-chat-btn">
+            <Link to="">채팅</Link>
+          </div>
         </div>
         <div className="search-bar">
           <input type="text" />

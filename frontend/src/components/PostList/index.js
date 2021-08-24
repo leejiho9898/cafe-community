@@ -1,14 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./PostListStyle.css";
-function PostList() {
+import { useDispatch, useSelector } from "react-redux";
+import client from "api/client";
+import { SetBoard } from "modules/board";
+function PostList(props) {
+  const dispatch = useDispatch();
   const params = useParams();
-  const boardname = params.boardname;
+  const boardId = params.boardId;
+  const board = useSelector((state) => state.board);
+  const cafeInfo = useSelector((state) => state.cafe);
+  console.log(cafeInfo)
+  const [posts, setposts] = useState([]);
+  useEffect(() => {
+    const getBoardDetail = async () => {
+      const response = await client.get(`/board/readBoard/${boardId}`);
+      dispatch(SetBoard(response.data.board));
+    };
+
+    const getPostList = async () => {
+      const response = await client.get(
+        `/post/readPostList/${cafeInfo._id}/${boardId}`
+      );
+      console.log(response.data.posts)
+      setposts(response.data.posts);
+    };
+    getBoardDetail();
+    getPostList();
+  }, [params]);
   return (
     <>
       <div className="list-container">
-        <div className="board-tit">{boardname}</div>
-        <div className="tit-explanation">{boardname}입니다.</div>
+        <div className="board-tit">{board.name}</div>
+        <div className="tit-explanation">{board.name}입니다.</div>
         <div className="list-handler">
           <div>11,130개의 글</div>
           <div>
@@ -70,61 +94,19 @@ function PostList() {
               <col style={{ width: "68px" }} />
             </colgroup>
             <tbody>
-              <tr>
-                <td className="post-number">
-                  <div>123123</div>
-                </td>
-                <td className="post-tit">
-                  <Link>안녕하세요 가입인사입니다.</Link>
-                </td>
-                <td className="td-name">유재석</td>
-                <td className="td-date">2021.07.10.</td>
-                <td className="td-view">12</td>
-              </tr>
-              <tr>
-                <td className="post-number">
-                  <div>123123</div>
-                </td>
-                <td className="post-tit">
-                  <Link>안녕하세요 가입인사입니다.</Link>
-                </td>
-                <td className="td-name">유재석</td>
-                <td className="td-date">2021.07.10.</td>
-                <td className="td-view">0</td>
-              </tr>
-              <tr>
-                <td className="post-number">
-                  <div>123123</div>
-                </td>
-                <td className="post-tit">
-                  <Link>안녕하세요 가입인사입니다.</Link>
-                </td>
-                <td className="td-name">유재석</td>
-                <td className="td-date">2021.07.10.</td>
-                <td className="td-view">0</td>
-              </tr>
-              <tr>
-                <td className="post-number">
-                  <div>123123</div>
-                </td>
-                <td className="post-tit">
-                  <Link>안녕하세요 가입인사입니다.</Link>
-                </td>
-                <td className="td-name">유재석</td>
-                <td className="td-date">2021.07.10.</td>
-                <td className="td-view">0</td>
-              </tr>
-              <tr>
-                <td className="post-number">
-                  <div>123123</div>
-                </td>
-                <td className="post-tit">
-                  <Link>안녕하세요 가입인사입니다.</Link>
-                </td>
-                <td className="td-name">유재석</td>
-                <td className="td-date">2021.07.10.</td>
-                <td className="td-view">0</td>
-              </tr>
+              {posts.map((post, index) => (
+                <tr key={index}>
+                  <td className="post-number">
+                    <div>123123</div>
+                  </td>
+                  <td className="post-tit">
+                    <Link to={`/cafeMain/${cafeInfo.route}/board/${boardId}/post/${post._id}`}>{post.title}</Link>
+                  </td>
+                  <td className="td-name">유재석</td>
+                  <td className="td-date">2021.07.10.</td>
+                  <td className="td-view">12</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
