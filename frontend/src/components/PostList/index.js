@@ -22,7 +22,6 @@ function PostList(props) {
       const response = await client.get(
         `/post/readPostList/${cafeInfo._id}/${boardId}`
       );
-      console.log(response.data.posts)
       setposts(response.data.posts);
     };
     getBoardDetail();
@@ -60,7 +59,7 @@ function PostList(props) {
             </tbody>
           </table>
         </div>
-        <div className="notice-post">
+        {/* <div className="notice-post">
           <table>
             <colgroup>
               <col style={{ width: "88px" }} />
@@ -83,7 +82,7 @@ function PostList(props) {
               </tr>
             </tbody>
           </table>
-        </div>
+        </div> */}
         <div className="posts">
           <table>
             <colgroup>

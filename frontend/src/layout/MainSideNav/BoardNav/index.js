@@ -13,7 +13,6 @@ function BoardNav() {
   const route = params.cafe;
 
   useEffect(() => {
-    console.log(cafeInfo);
     const getBoard = async () => {
         const response = await client.get(`/board/readBoardList/${cafeInfo._id}`);
         setBoards(response.data.boards);
@@ -23,14 +22,14 @@ function BoardNav() {
 
   return (
     <div>
-      {boards.map((board, index) => (
+      {boards ? boards.map((board, index) => (
         <div className="notice-board-list" key={index}>
           <div className="notice-board">
             <BsFileText size="18" />
             <Link to={`/cafeMain/${route}/board/${board._id}` } >{board.name}</Link>
           </div>
         </div>
-      ))}
+      )):(<></>)}
     </div>
   );
 }

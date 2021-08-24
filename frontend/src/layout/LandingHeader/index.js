@@ -50,7 +50,7 @@ const LandingHeader = () => {
                 <div>
                   <li>hi, {user.name}!</li>
                   <li>
-                    <Link onClick={logout}>로그아웃</Link>
+                    <button onClick={logout}>로그아웃</button>
                   </li>
                 </div>
               ) : (

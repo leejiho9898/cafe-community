@@ -1,20 +1,38 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import "./PostViewStyle.scss";
+import client from "api/client";
+import { useDispatch, useSelector } from "react-redux";
+import { SetPost } from "modules/post";
 function PostView() {
+  const dispatch = useDispatch();
+  const params = useParams();
+  const postId = params.postid;
+  const post = useSelector((state) => state.post);
+  const [Date, setDate] = useState("")
+  useEffect(() => {
+    const getData = async () => {
+      const response = await client.get(`/post/readPostDetail/${postId}`);
+      console.log(response.data.post);
+      dispatch(SetPost(response.data.post));
+      setDate(response.data.post.createdAt)
+    };
+    getData();
+  }, []);
   return (
     <div className="post-container">
+      <div className="post-from">{post.board.name}</div>
       <div className="post-header">
-        <div className="post-title">가입인사</div>
+        <div className="post-title">{post.title}</div>
         <div className="writer">
           <div className="writer-info">
             <div className="mask"></div>
-            <div className="nick">이지호</div>
+            <div className="nick">{post.writer.name}</div>
           </div>
-            <div className="date">2021.08.02 11:21</div>
+          <div className="date">{Date.substr(0,10)}</div>
         </div>
       </div>
-      <div className="contents">안녕하세요 가입인사입니다 반갑습니다.</div>
+      <div className="contents" dangerouslySetInnerHTML={{ __html: post.content }}></div>
       <div className="title">댓글</div>
       <div className="reply-box">
         <div className="writer">
@@ -38,10 +56,18 @@ function PostView() {
         </div>
       </div>
       <div className="bottom-btns">
-        <Link to="" className="btm-btn">글쓰기</Link>
-        <Link to="" className="btm-btn">수정</Link>
-        <Link to="" className="btm-btn">삭제</Link>
-        <Link to="" className="btm-btn">목록</Link>
+        <Link to="" className="btm-btn">
+          글쓰기
+        </Link>
+        <Link to="" className="btm-btn">
+          수정
+        </Link>
+        <Link to="" className="btm-btn">
+          삭제
+        </Link>
+        <Link to="" className="btm-btn">
+          목록
+        </Link>
       </div>
     </div>
   );

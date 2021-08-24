@@ -3,6 +3,10 @@
   border: 1px solid #ebecef;
   border-radius: 6px;
   margin-left: 215px;
+  .post-from{
+    color: #797979;
+    font-size: 14px;
+  }
 }
 .post-header {
   border-bottom: 1px solid #ebecef;
@@ -11,7 +15,7 @@
 .post-title {
   font-size: 26px;
   font-weight: 400;
-  padding: 15px;
+  padding: 15px 5px;
 }
 .title {
   margin-top: 3px;

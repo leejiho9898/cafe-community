@@ -21,7 +21,6 @@ function CafeInfoNav() {
       const response = await client.get(`/cafe/cafeInfo/${route}/${user._id}`);
       // console.log(user._id)
       dispatch(SetCafe(response.data.cafeInfo));
-      console.log(response.data);
     };
     getCafe();
   }, [route, dispatch]);
