@@ -1,0 +1,42 @@
+.tit {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0px 30px;
+}
+.post-write-form {
+  margin-top: 24px;
+}
+#select {
+  width: 15%;
+  height: 30px;
+}
+#tit {
+  width: 65%;
+  height: 27px;
+}
+.ck-rounded-corners .ck.ck-editor__editable:not(.ck-editor__nested-editable),
+.ck.ck-editor__editable:not(.ck-editor__nested-editable).ck-rounded-corners {
+  border: 1px solid black;
+  height: 50vh;
+  overflow-y: scroll;
+}
+
+.submit-box {
+  margin-left: 50px;
+  margin: 10px;
+  text-align: center;
+  .submit-button {
+    font-weight: 700;
+    width: 80px;
+    height: 40px;
+    font-size: 13px;
+    line-height: 30px;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 1px;
+    &:hover {
+      color: #ffffff;
+      background-color: #727272;
+    }
+  }
+}

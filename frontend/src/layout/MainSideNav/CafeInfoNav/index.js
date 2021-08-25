@@ -102,7 +102,7 @@ function CafeInfoNav() {
         </div>
         <div className="cafe-btns">
           <div className="cafe-write-btn blk">
-            <Link to="/cafeMain/write">카페 글쓰기</Link>
+            <Link to={`/cafeMain/${route}/write`}>카페 글쓰기</Link>
           </div>
           <div className="cafe-chat-btn">
             <Link to="">채팅</Link>

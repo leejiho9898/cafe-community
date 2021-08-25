@@ -25,7 +25,7 @@ const CafeMain = () => {
           <div className="content">
             <Switch>
               <Route path="/cafeMain/:cafe/join" exact component={JoinForm} />
-              <Route path="/cafeMain/:cafe/write" exact component={PostForm} />
+              <Route path="/cafeMain/:cafe/write" component={PostForm} />
               <Route
                 path="/cafeMain/:cafe/board/:boardId?/post/:postid?"
                 exact
