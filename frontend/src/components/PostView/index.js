@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import "./PostViewStyle.scss";
 import client from "api/client";
 import { useDispatch, useSelector } from "react-redux";
 import { SetPost } from "modules/post";
+
 function PostView() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const params = useParams();
   const postId = params.postid;
+  const boardId = params.boardId;
+  const cafe = params.cafe;
   const post = useSelector((state) => state.post);
   const [Date, setDate] = useState("")
   useEffect(() => {
@@ -56,16 +60,16 @@ function PostView() {
         </div>
       </div>
       <div className="bottom-btns">
-        <Link to="" className="btm-btn">
+        <Link to={`/cafeMain/${cafe}/write`} className="btm-btn">
           글쓰기
         </Link>
-        <Link to="" className="btm-btn">
+        <Link to={`/cafeMain/${cafe}/update/${postId}`} className="btm-btn">
           수정
         </Link>
-        <Link to="" className="btm-btn">
+        <Link className="btm-btn">
           삭제
         </Link>
-        <Link to="" className="btm-btn">
+        <Link className="btm-btn" onClick={()=>{history.push(`/cafeMain/${cafe}/board/${boardId}/`)}}>
           목록
         </Link>
       </div>

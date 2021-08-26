@@ -10,6 +10,7 @@ import PostForm from "components/PostForm";
 import JoinForm from "components/JoinForm/JoinForm";
 import PostView from "components/PostView";
 import LandingHeader from "layout/LandingHeader";
+import PostUpdate from "components/PostForm/PostUpdate";
 
 const CafeMain = () => {
 
@@ -26,6 +27,7 @@ const CafeMain = () => {
             <Switch>
               <Route path="/cafeMain/:cafe/join" exact component={JoinForm} />
               <Route path="/cafeMain/:cafe/write" component={PostForm} />
+              <Route path="/cafeMain/:cafe/update/:postId" component={PostUpdate} />
               <Route
                 path="/cafeMain/:cafe/board/:boardId?/post/:postid?"
                 exact
