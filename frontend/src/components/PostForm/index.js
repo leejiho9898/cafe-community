@@ -4,7 +4,9 @@ import DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
 import "./PostformStyle.scss";
 import { useSelector } from "react-redux";
 import client from "api/client";
+import { useHistory } from "react-router-dom";
 const PostForm = () => {
+  const history = useHistory();
   const cafeInfo = useSelector((state) => state.cafe);
   const user = useSelector((state) => state.user);
   const board = useSelector((state) => state.board);
@@ -27,11 +29,11 @@ const PostForm = () => {
 
   const onsubmit = async (e) => {
     e.preventDefault();
-    console.log(content)
+    console.log(content);
     const body = {
       title,
       content,
-      boardId: "612371ef3d60f614f0882a9a",
+      boardId: "61288966cb11021d9013237d",
       writer: user._id,
     };
     try {
@@ -40,6 +42,7 @@ const PostForm = () => {
         body
       );
       console.log(response);
+      history.push("http://localhost:3000/cafeMain/first/board/61288966cb11021d9013237d")
     } catch (e) {
       alert(e.response.data.message);
     }

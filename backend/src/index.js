@@ -5,6 +5,7 @@ import userRouter from "./routers/userRouter";
 import cafeRouter from "./routers/cafeRouter";
 import boardRouter from "./routers/boardRouter";
 import postRouter from "./routers/postRouter";
+import commentRouter from "./routers/commentRouter";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -38,5 +39,6 @@ app.use("/api/cafe", cafeRouter);
 app.use("/uploads", express.static("uploads"));
 app.use("/api/board", boardRouter);
 app.use("/api/post", postRouter);
+app.use("/api/comment", commentRouter);
 
 app.listen(process.env.PORT, handleListening);
