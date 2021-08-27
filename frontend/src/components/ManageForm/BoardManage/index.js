@@ -1,23 +1,15 @@
+import { createBoardAPI, deleteBoardAPI, updateBoardAPI } from "api/board";
 import client from "api/client";
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import useBoardList from "hooks/board/useBoardListEffect";
+import { useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import "./style.scss";
 
 function BoardManage() {
-  const history = useHistory();
-  const cafeInfo = useSelector((state) => state.cafe);
-  const [Boards, setBoards] = useState([]);
   const params = useParams();
 
   const boardId = params.boardId;
-  useEffect(() => {
-    const getBoard = async () => {
-      const response = await client.get(`/board/readBoardList/${cafeInfo._id}`);
-      setBoards(response.data.boards);
-    };
-    getBoard();
-  }, [cafeInfo]);
+  const { cafeInfo, boards, setBoards } = useBoardList();
 
   const [title1, setTitle1] = useState(); //수정용
   const [title2, setTitle2] = useState(); //제작용
@@ -26,63 +18,42 @@ function BoardManage() {
     setTitle1(e.target.value);
     console.log(title1);
   };
-  
+
   const onChangecreateTitle = (e) => {
     setTitle2(e.target.value);
     console.log(title2);
   };
 
-
   const onClickDelete = async () => {
+    console.log("나 딜리트다");
     try {
-      const newBoard = await client.delete(
-        `http://localhost:4000/api/board/deleteBoard/${cafeInfo._id}/${boardId}`
-      );
-      console.log(newBoard.data);
-      history.push(`/management/${cafeInfo.route}/board`);
-      window.location.reload();
+      const response = await deleteBoardAPI(cafeInfo._id, boardId);
+      console.log(response);
+      setBoards(response);
     } catch (e) {
-      alert("게시글 삭제에 실패했습니다.");
-      console.log(e);
+      alert(e);
     }
   };
 
-
-
-  const onSubmit =async (e) =>{
+  const onClickCreate = async (e) => {
+    console.log("나 크리에이트다");
     e.preventDefault();
-    const body = {
-      name:title2,
-    };
     try {
-      const response = await client.post(`/board/createBoard/${cafeInfo._id}`, body);
+      const response = await createBoardAPI(cafeInfo._id, title2);
       console.log(response);
-      history.push(`/management/${cafeInfo.route}/board`);
-      window.location.reload();
+
+      setBoards(boards.concat(response));
     } catch (e) {
-      alert(e.response.data.message);
+      alert(e);
     }
   };
-  
-
-  
-
   const onClickUpdate = async () => {
-
-    const body = {
-      name: title1,
-      boardId,
-    };
     try {
-      const response = await client.patch(
-        `/board/modifyBoard/${cafeInfo._id}`,
-        body
-      );
+      const response = await updateBoardAPI(cafeInfo._id, title1, boardId);
       console.log(response);
-      history.push(`/management/${cafeInfo.route}/board`);
-      window.location.reload();
+      setBoards(response);
     } catch (e) {
-      alert(e.response.data.message);
+      console.log(e);
     }
   };
 
@@ -93,18 +64,16 @@ function BoardManage() {
         <div className="manage-board-list">
           <div className="manage-board-title">게시판리스트</div>
           <div className="manage-board-ele">
-            {Boards.map((board, index) => (
-              <div>
-                <div className="board1" key={index}>
-                  <Link to={`/management/first/board/${board._id}`}>
-                    {board.name}
-                  </Link>
-                </div>
+            {boards.map((board, index) => (
+              <div className="board1" key={index}>
+                <Link to={`/management/first/board/${board._id}`}>
+                  {board.name}
+                </Link>
               </div>
             ))}
           </div>
         </div>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onClickCreate}>
           <div className="manage-board-action">
             <div className="action-ele">게시판 생성</div>
             <div className="flex">
@@ -112,7 +81,7 @@ function BoardManage() {
                 <input type="text" onChange={onChangecreateTitle} />
               </div>
               <div className="del-board-box">
-                <input type="submit" className="del-board" value="생성" onClick={onClickUpdate} />
+                <input type="submit" className="del-board" value="생성" />
               </div>
             </div>
             {boardId && (
@@ -123,7 +92,9 @@ function BoardManage() {
                     <input type="text" onChange={onChangeUpdateTitle} />
                   </div>
                   <div className="del-board-box">
-                    <div className="del-board" onClick={onClickUpdate}>수정</div>
+                    <div className="del-board" onClick={onClickUpdate}>
+                      수정
+                    </div>
                   </div>
                 </div>
                 <div className="action-ele">게시판 삭제</div>

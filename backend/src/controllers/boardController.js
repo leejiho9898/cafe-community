@@ -102,11 +102,10 @@ export const modifyBoard = async (req, res) => {
 
 //게시판 지우기
 export const deleteBoard = async (req, res) => {
-  const { cafeId, boardId } = req.params;
+  const { boardId,cafeId } = req.params;
   try {
     const board = await Board.findOneAndDelete({
       _id: boardId,
-      cafe: cafeId,
     });
 
     if (!board) {
