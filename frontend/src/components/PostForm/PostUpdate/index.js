@@ -4,30 +4,42 @@ import client from "api/client";
 import DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
 import { useDispatch, useSelector } from "react-redux";
 import "./style.scss";
+import { useHistory, useParams } from "react-router-dom";
+import useBoardList from "hooks/board/useBoardListEffect";
 
 const PostUpdate = () => {
-  const dispatch = useDispatch();
+  const history = useHistory();
+  const params = useParams();
+  const postId = params.postId;
   const cafeInfo = useSelector((state) => state.cafe);
+  const [SelectedBoard, setSelectedBoard] = useState();
   const user = useSelector((state) => state.user);
-  const board = useSelector((state) => state.board);
-  useEffect(() => {
-    const getData = async () => {
-      const response = await client.get(`/post/updatePost`);
-      dispatch(response.data.transition);
-    };
-    getData();
-  }, []);
+  const { boards } = useBoardList();
   const [form, setform] = useState({
     title: "",
     content: "",
   });
-
   const { title, content } = form;
+  useEffect(() => {
+    const getData = async () => {
+      const response = await client.get(`/post/readPostDetail/${postId}`);
+      setform({
+        title: response.data.post.title,
+        content: response.data.post.content,
+      });
+    };
+    getData();
+  }, [params]);
+
+  const onClickBoard = (e) => {
+    setSelectedBoard(e.currentTarget.value);
+    console.log(SelectedBoard);
+  };
 
   const onchange = (e) => {
-    const nextForm = {
+     const nextForm = {
       ...form,
-      [e.target.name]: e.target.value,
+      title: e.target.value,
     };
     setform(nextForm);
     console.log(form);
@@ -35,19 +47,16 @@ const PostUpdate = () => {
 
   const onsubmit = async (e) => {
     e.preventDefault();
-    console.log(content);
+
     const body = {
       title,
       content,
-      boardId: "612371ef3d60f614f0882a9a",
-      writer: user._id,
+      postId,
     };
+
     try {
-      const response = await client.post(
-        `/post/createPost/${cafeInfo._id}`,
-        body
-      );
-      console.log(response);
+      const response = await client.patch(`/post/updatePost`, body);
+      history.push("/")
     } catch (e) {
       alert(e.response.data.message);
     }
@@ -55,20 +64,16 @@ const PostUpdate = () => {
 
   return (
     <>
-      <div className="tit">글쓰기</div>
+      <div className="tit">글수정</div>
       <form className="post-write-form" onSubmit={onsubmit}>
-        <select name="select-border" id="select">
-          <option value="1">잡담게시판</option>
-          <option value="2">공지게시판</option>
-          <option value="3">영화게시판</option>
-          <option value="4">고민게시판</option>
-          <option value="5">포토게시판</option>
-          <option value="6">유머게시판</option>
-          <option value="7">뉴스게시판</option>
-          <option value="8">패션게시판</option>
-          <option value="9">근황게시판</option>
-          <option value="10">게임게시판</option>
-          <option value="11">영화추천게시판</option>
+        <select name="select-border" id="select"  onChange={onClickBoard}>
+        {boards &&
+            boards.map((board, index) => (
+              <option key={index} value={board._id}>
+                {board.name}
+              </option>
+            ))}
+            {/* 아직 백엔드 문제로 게시판수정까지는 불가능한데 일단 만들긴함 */}
         </select>
         <input
           type="text"
@@ -93,14 +98,11 @@ const PostUpdate = () => {
             }}
             onChange={(event, editor) => {
               const data = editor.getData();
-              const nextForm = {
-                ...form,
-                content: data,
-              };
-              setform(nextForm);
+
+              setform({ content: data });
             }}
             editor={DecoupledEditor}
-            data=""
+            data={content}
           />
         </div>
         <div className="submit-box">

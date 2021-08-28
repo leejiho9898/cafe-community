@@ -1,23 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
 import "./PostformStyle.scss";
 import { useSelector } from "react-redux";
 import client from "api/client";
 import { useHistory } from "react-router-dom";
+import { readBoardListAPI } from "api/board";
+import useBoardList from "hooks/board/useBoardListEffect";
 const PostForm = () => {
   const history = useHistory();
   const cafeInfo = useSelector((state) => state.cafe);
   const user = useSelector((state) => state.user);
-  const board = useSelector((state) => state.board);
-  console.log(user);
+  const [SelectedBoard, setSelectedBoard] = useState();
   const [form, setform] = useState({
     title: "",
     content: "",
   });
 
   const { title, content } = form;
+  const { boards } = useBoardList();
 
+  const onClickBoard = (e) => {
+    setSelectedBoard(e.currentTarget.value);
+    console.log(SelectedBoard);
+  };
   const onchange = (e) => {
     const nextForm = {
       ...form,
@@ -33,7 +39,7 @@ const PostForm = () => {
     const body = {
       title,
       content,
-      boardId: "61288966cb11021d9013237d",
+      boardId: SelectedBoard,
       writer: user._id,
     };
     try {
@@ -42,7 +48,7 @@ const PostForm = () => {
         body
       );
       console.log(response);
-      history.push("http://localhost:3000/cafeMain/first/board/61288966cb11021d9013237d")
+      history.push(`/cafeMain/first/board/${SelectedBoard}`);
     } catch (e) {
       alert(e.response.data.message);
     }
@@ -52,18 +58,13 @@ const PostForm = () => {
     <>
       <div className="tit">글쓰기</div>
       <form className="post-write-form" onSubmit={onsubmit}>
-        <select name="select-border" id="select">
-          <option value="1">잡담게시판</option>
-          <option value="2">공지게시판</option>
-          <option value="3">영화게시판</option>
-          <option value="4">고민게시판</option>
-          <option value="5">포토게시판</option>
-          <option value="6">유머게시판</option>
-          <option value="7">뉴스게시판</option>
-          <option value="8">패션게시판</option>
-          <option value="9">근황게시판</option>
-          <option value="10">게임게시판</option>
-          <option value="11">영화추천게시판</option>
+        <select name="select-border" id="select" onChange={onClickBoard}>
+          {boards &&
+            boards.map((board, index) => (
+              <option key={index} value={board._id}>
+                {board.name}
+              </option>
+            ))}
         </select>
         <input
           type="text"

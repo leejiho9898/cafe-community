@@ -45,7 +45,7 @@ export const readComments = async (req, res) => {
   try {
     const comments = await Comment.find({
       post: postId,
-    });
+    }).populate("writer");
     return res.status(200).json({
       success: true,
       comments: [...comments.reverse()],
