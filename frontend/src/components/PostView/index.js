@@ -13,8 +13,8 @@ function PostView() {
   const boardId = params.boardId;
   const cafe = params.cafe;
   const post = useSelector((state) => state.post);
-  const user = useSelector(state => state.user);
-
+  const user = useSelector((state) => state.user);
+  const [commentContent, setcommentContent] = useState([]);
   const [Date, setDate] = useState("");
   const [comments, setcommnets] = useState([]);
   useEffect(() => {
@@ -34,9 +34,35 @@ function PostView() {
     };
     getComment();
   }, []);
+
+  const onchange = (e) => {
+    setcommentContent(e.target.value);
+    console.log(commentContent);
+  };
+
+  const onClickWriteComment = async (e) => {
+    e.preventDefault();
+    const body = {
+      postId,
+      userId: user._id,
+      content: commentContent,
+    };
+    try {
+      const response = await client.post(`/comment/createComment`, body);
+      console.log(response)
+      setcommnets(comments.concat(response.data.comment))
+      setcommentContent("")
+    } catch (e) {
+      alert(e.response.data.message);
+    }
+  };
   return (
     <div className="post-container">
-      <div className="post-from"><Link to={`/cafemain/${cafe.router}/board/${boardId}`}>{post.board.name}</Link></div>
+      <div className="post-from">
+        <Link to={`/cafemain/${cafe.router}/board/${boardId}`}>
+          {post.board.name}
+        </Link>
+      </div>
       <div className="post-header">
         <div className="post-title">{post.title}</div>
         <div className="writer">
@@ -52,7 +78,6 @@ function PostView() {
         dangerouslySetInnerHTML={{ __html: post.content }}
       ></div>
 
-
       <div className="title">댓글</div>
       {comments &&
         comments.map((comment, index) => (
@@ -64,14 +89,23 @@ function PostView() {
             </div>
           </div>
         ))}
-
-      <div className="write-reply">
-        <div className="write-reply-box">
-          <div className="nick">{user.name}</div>
-          <input type="text" placeholder="댓글을 남겨보세요" />
-          <div className="buttons">등록</div>
+      <form onSubmit={onClickWriteComment}>
+        <div className="write-reply">
+          <div className="write-reply-box">
+            <div className="nick">{user.name}</div>
+            <input
+              type="text"
+              placeholder="댓글을 남겨보세요"
+              onChange={onchange}
+              name="commentContents"
+              value={commentContent}
+            />
+            <div className="buttons">
+              <input type="submit" value="등록" />
+            </div>
+          </div>
         </div>
-      </div>
+      </form>
       <div className="bottom-btns">
         <Link to={`/cafeMain/${cafe}/write`} className="btm-btn">
           글쓰기
