@@ -5,6 +5,7 @@ import client from "api/client";
 import { useDispatch, useSelector } from "react-redux";
 import { SetPost } from "modules/post";
 
+import { BsThreeDotsVertical } from "react-icons/bs";
 function PostView() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ function PostView() {
   const cafe = params.cafe;
   const post = useSelector((state) => state.post);
   const user = useSelector((state) => state.user);
+  const cafeInfo = useSelector((state) => state.cafe);
   const [commentContent, setcommentContent] = useState([]);
   const [Date, setDate] = useState("");
   const [comments, setcommnets] = useState([]);
@@ -49,13 +51,26 @@ function PostView() {
     };
     try {
       const response = await client.post(`/comment/createComment`, body);
-      console.log(response)
-      setcommnets(comments.concat(response.data.comment))
-      setcommentContent("")
+      console.log(response);
+      setcommnets(comments.concat(response.data.comment));
+      setcommentContent("");
     } catch (e) {
       alert(e.response.data.message);
     }
   };
+
+  const onClickDeleteComment = async (commentId) => {
+    try {
+      const response = await client.delete(
+        `/comment/deleteComment/${cafeInfo._id}/${commentId}`
+      );
+      console.log(response.data.comments);
+    } catch (e) {
+      alert("댓글 삭제에 실패했습니다.");
+      console.log(e);
+    }
+  };
+
   return (
     <div className="post-container">
       <div className="post-from">
@@ -87,6 +102,15 @@ function PostView() {
               <div className="nick">{comment.writer.name}</div>
               <div className="reply-contents">{comment.content}</div>
             </div>
+            {user._id == comment.writer._id ? (
+              <div className="reply-menu">
+                <div className="bubble">
+                  <button className="bubble-ele" >수정</button>
+                  <button className="bubble-ele" onClick={onClickDeleteComment}>삭제</button>
+                </div>
+                <BsThreeDotsVertical />
+              </div>
+            ) : null}
           </div>
         ))}
       <form onSubmit={onClickWriteComment}>

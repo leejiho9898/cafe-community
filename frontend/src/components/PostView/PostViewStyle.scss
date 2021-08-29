@@ -3,7 +3,7 @@
   border: 1px solid #ebecef;
   border-radius: 6px;
   margin-left: 215px;
-  .post-from{
+  .post-from {
     color: #797979;
     font-size: 14px;
   }
@@ -54,6 +54,7 @@
   border-bottom: 1px solid #ebecef;
 }
 .buttons {
+  cursor: pointer;
   font-weight: 700;
   min-width: 46px;
   height: 36px;
@@ -72,13 +73,50 @@
   padding: 10px;
   bottom: 20px;
 }
+
+//.reply-menu-box {
+//  display: none;
+//}
+
 .reply-box {
   display: flex;
+  position: relative;
   border-bottom: 1px solid #ebecef;
   padding: 15px;
+  justify-content: space-between;
+  align-items: center;
   input {
     border: none;
     flex-basis: 80%;
+  }
+}
+.bubble {
+  display: none;
+  float: right;
+  text-align: center;
+  width: 100px;
+  height: 35px;
+  margin-right: 5px;
+  background: #ebecef;
+  border-radius: 10px;
+  .bubble-ele {
+    width: 90%;
+    margin: 0 auto;
+    &:hover {
+      background: #d3d4d6;
+      border-radius: 5px;
+    }
+  }
+}
+
+.reply-menu {
+  display: flex;
+  cursor: pointer;
+  &:hover {color: #fd8802;
+    .bubble {
+      display: block;
+      color: black;
+    }
   }
 }
 
@@ -88,5 +126,5 @@
 }
 
 .btm-btn {
-@extend .buttons
+  @extend .buttons;
 }

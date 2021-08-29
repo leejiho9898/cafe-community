@@ -48,7 +48,7 @@ export const readComments = async (req, res) => {
     }).populate("writer");
     return res.status(200).json({
       success: true,
-      comments: [...comments.reverse()],
+      comments,
     });
   } catch (e) {
     return res.status(500).json({
