@@ -5,6 +5,7 @@ import React from "react";
 import ManagementNav from "./../../layout/ManagementNav/index";
 import { Route } from "react-router-dom";
 import BoardManage from "components/ManageForm/BoardManage/index";
+import PostManage from "components/ManageForm/PostManage";
 
 function CafeManagement() {
   return (
@@ -17,6 +18,7 @@ function CafeManagement() {
         <ManagementNav />
       </div>
       <Route exact path="/management/:cafe/board/:boardId?" component={BoardManage} />
+      <Route exact path="/management/:cafe/post/:postId?" component={PostManage} />
     </>
   );
 }

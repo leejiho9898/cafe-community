@@ -2,7 +2,7 @@ import { createBoardAPI, deleteBoardAPI, updateBoardAPI } from "api/board";
 import client from "api/client";
 import useBoardList from "hooks/board/useBoardListEffect";
 import { useState } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./style.scss";
 
 function BoardManage() {
