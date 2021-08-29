@@ -13,9 +13,10 @@ function PostView() {
   const postId = params.postid;
   const boardId = params.boardId;
   const cafe = params.cafe;
+
   const post = useSelector((state) => state.post);
   const user = useSelector((state) => state.user);
-  const cafeInfo = useSelector((state) => state.cafe);
+
   const [commentContent, setcommentContent] = useState([]);
   const [Date, setDate] = useState("");
   const [comments, setcommnets] = useState([]);
@@ -62,15 +63,28 @@ function PostView() {
   const onClickDeleteComment = async (commentId) => {
     try {
       const response = await client.delete(
-        `/comment/deleteComment/${cafeInfo._id}/${commentId}`
+        `/comment/deleteComment/${postId}/${commentId}`
       );
-      console.log(response.data.comments);
+      setcommnets(response.data.comments);
     } catch (e) {
       alert("댓글 삭제에 실패했습니다.");
       console.log(e);
     }
   };
 
+  const onClickUpdataComment = async (content, commentId) => {
+    const body = {
+      commentId,
+      content,
+    };
+    try {
+      const response = await client.patch(`/comment/updateComment`, body);
+      setcommnets(response.data.comments);
+    } catch (e) {
+      alert("댓글 수정에 실패했습니다.");
+      console.log(e);
+    }
+  };
   return (
     <div className="post-container">
       <div className="post-from">
@@ -100,13 +114,25 @@ function PostView() {
             <div className="writer">
               <div className="mask"></div>
               <div className="nick">{comment.writer.name}</div>
+
               <div className="reply-contents">{comment.content}</div>
+
+              <div className="update-reply">
+                <input type="text" />
+              </div>
             </div>
             {user._id == comment.writer._id ? (
               <div className="reply-menu">
                 <div className="bubble">
-                  <button className="bubble-ele" >수정</button>
-                  <button className="bubble-ele" onClick={onClickDeleteComment}>삭제</button>
+                  <button className="bubble-ele" onClick={() => {}}>
+                    수정
+                  </button>
+                  <button
+                    className="bubble-ele"
+                    onClick={() => onClickDeleteComment(comment._id)}
+                  >
+                    삭제
+                  </button>
                 </div>
                 <BsThreeDotsVertical />
               </div>

@@ -76,9 +76,12 @@ export const updateComments = async (req, res) => {
       { new: true }
     );
 
+    const comments = await Comment.find({
+      post: postId,
+    });
     return res.status(200).json({
       success: true,
-      comment,
+      comments,
     });
   } catch (e) {
     return res.status(500).json({
@@ -105,8 +108,6 @@ export const deleteComment = async (req, res) => {
     const comments = await Comment.find({
       post: postId,
     });
-
-    console.log("asd");
     return res.status(200).json({
       success: true,
       comments,
