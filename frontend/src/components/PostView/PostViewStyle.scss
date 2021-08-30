@@ -67,6 +67,17 @@
   border-radius: 6px;
   text-align: center;
 }
+
+.update-reply {
+  display: flex;
+  border: 1px solid #c5c3c5;
+  border-radius: 5px;
+  width: 650px;
+  align-items: center;
+  .updateinput {
+    flex-basis: 90%;
+  }
+}
 .write-reply {
   height: 88px;
   width: 100%;
@@ -88,6 +99,7 @@
   input {
     border: none;
     flex-basis: 80%;
+    height: 30px;
   }
 }
 .bubble {
@@ -108,11 +120,22 @@
     }
   }
 }
-
+.bubble-ele2 {
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 2px;
+  align-items: center;
+  width: 35px;
+  background-color: rgb(238, 238, 238);
+  text-align: center;
+  line-height: 25px;
+  height: 25px;
+}
 .reply-menu {
   display: flex;
   cursor: pointer;
-  &:hover {color: #fd8802;
+  &:hover {
+    color: #fd8802;
     .bubble {
       display: block;
       color: black;

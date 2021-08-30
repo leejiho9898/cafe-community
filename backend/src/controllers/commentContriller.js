@@ -59,7 +59,7 @@ export const readComments = async (req, res) => {
 };
 
 export const updateComments = async (req, res) => {
-  const { content, commentId } = req.body;
+  const { content, commentId,postId } = req.body;
   try {
     let comment = await Comment.findById({ _id: commentId });
 

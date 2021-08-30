@@ -16,10 +16,11 @@ function PostView() {
 
   const post = useSelector((state) => state.post);
   const user = useSelector((state) => state.user);
-
+  const [activeUpdate, setactiveUpdate] = useState("");
   const [commentContent, setcommentContent] = useState([]);
   const [Date, setDate] = useState("");
   const [comments, setcommnets] = useState([]);
+  const [updateContent, setupdateContent] = useState("")
   useEffect(() => {
     const getData = async () => {
       const response = await client.get(`/post/readPostDetail/${postId}`);
@@ -36,7 +37,7 @@ function PostView() {
       setcommnets(response.data.comments);
     };
     getComment();
-  }, []);
+  }, [comments]);
 
   const onchange = (e) => {
     setcommentContent(e.target.value);
@@ -71,15 +72,31 @@ function PostView() {
       console.log(e);
     }
   };
+  const onClickActiveUpdateComment = async (commentId,content) => {
+    setactiveUpdate(commentId);
+    setupdateContent(content)
+  };
+  const cancelUpdateComment = ()=>{
+    setactiveUpdate("");
+  }
 
-  const onClickUpdataComment = async (content, commentId) => {
+  const onChangeUpdate=(e)=>{
+    setupdateContent(e.target.value)
+    console.log(activeUpdate);
+  }
+  const onClickUpdataComment = async (commentId,content) => {
     const body = {
       commentId,
       content,
+      postId,
     };
+    console.log(content)
+    console.log(commentId)
     try {
       const response = await client.patch(`/comment/updateComment`, body);
       setcommnets(response.data.comments);
+      setactiveUpdate("");
+      
     } catch (e) {
       alert("댓글 수정에 실패했습니다.");
       console.log(e);
@@ -115,24 +132,31 @@ function PostView() {
               <div className="mask"></div>
               <div className="nick">{comment.writer.name}</div>
 
-              <div className="reply-contents">{comment.content}</div>
-
-              <div className="update-reply">
-                <input type="text" />
-              </div>
+              {activeUpdate === comment._id ? (
+                <div className="update-reply">
+                  <input type="text" onChange={onChangeUpdate} value={updateContent} className="updateinput"/>
+                  <div className="bubble-ele2" onClick={()=>{onClickUpdataComment(comment._id,updateContent)}}>제출</div>
+                <div className="bubble-ele2" onClick={cancelUpdateComment}>취소</div>
+                </div>
+              ) : (
+                <div className="reply-contents"> {comment.content}</div>
+              )}
             </div>
             {user._id == comment.writer._id ? (
               <div className="reply-menu">
                 <div className="bubble">
-                  <button className="bubble-ele" onClick={() => {}}>
+                  <div
+                    className="bubble-ele"
+                    onClick={() => onClickActiveUpdateComment(comment._id,comment.content)}
+                  >
                     수정
-                  </button>
-                  <button
+                  </div>
+                  <div
                     className="bubble-ele"
                     onClick={() => onClickDeleteComment(comment._id)}
                   >
                     삭제
-                  </button>
+                  </div>
                 </div>
                 <BsThreeDotsVertical />
               </div>
