@@ -37,7 +37,7 @@ function PostView() {
       setcommnets(response.data.comments);
     };
     getComment();
-  }, [comments]);
+  }, []);
 
   const onchange = (e) => {
     setcommentContent(e.target.value);

@@ -18,7 +18,7 @@ function CafeManagement() {
         <ManagementNav />
       </div>
       <Route exact path="/management/:cafe/board/:boardId?" component={BoardManage} />
-      <Route exact path="/management/:cafe/post/:postId?" component={PostManage} />
+      <Route exact path="/management/:cafe/post/:boardId?/:postId?" component={PostManage} />
     </>
   );
 }

@@ -46,10 +46,10 @@ function ManagementNav() {
           </div>
           <div className="contents-list">
             <div>
-              <Link>전체 멤버 관리</Link>
+              전체 멤버 관리
             </div>
             <div>
-              <Link>등급 관리</Link>
+              등급 관리
             </div>
           </div>
         </div>

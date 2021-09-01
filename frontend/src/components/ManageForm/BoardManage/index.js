@@ -9,7 +9,14 @@ function BoardManage() {
   const params = useParams();
 
   const boardId = params.boardId;
-  const { cafeInfo, boards, setBoards } = useBoardList();
+  const {
+    cafeInfo,
+    boards,
+    setBoards,
+    createName,
+    onChangeName,
+    onCreateBoard,
+  } = useBoardList();
 
   const [title1, setTitle1] = useState(); //수정용
   const [title2, setTitle2] = useState(); //제작용
@@ -35,18 +42,19 @@ function BoardManage() {
     }
   };
 
-  const onClickCreate = async (e) => {
-    console.log("나 크리에이트다");
-    e.preventDefault();
-    try {
-      const response = await createBoardAPI(cafeInfo._id, title2);
-      console.log(response);
+  // const onClickCreate = async (e) => {
+  //   console.log("나 크리에이트다");
+  //   e.preventDefault();
+  //   try {
+  //     const response = await createBoardAPI(cafeInfo._id, title2);
+  //     console.log(response);
 
-      setBoards(boards.concat(response));
-    } catch (e) {
-      alert(e);
-    }
-  };
+  //     setBoards(boards.concat(response));
+  //   } catch (e) {
+  //     alert(e);
+  //   }
+  // };
+
   const onClickUpdate = async () => {
     try {
       const response = await updateBoardAPI(cafeInfo._id, title1, boardId);
@@ -64,7 +72,11 @@ function BoardManage() {
         <div className="manage-board-list">
           <div className="flex">
             <div className="manage-board-title">게시판리스트</div>
-            <div><Link to={`/management/${cafeInfo.route}/board`}>게시판 생성하러가기</Link></div>
+            <div>
+              <Link to={`/management/${cafeInfo.route}/board`}>
+                게시판 생성하러가기
+              </Link>
+            </div>
           </div>
 
           <div className="manage-board-ele">
@@ -77,7 +89,7 @@ function BoardManage() {
             ))}
           </div>
         </div>
-        <form onSubmit={onClickCreate}>
+        <form onSubmit={onCreateBoard}>
           <div className="manage-board-action">
             {boardId ? (
               <>
@@ -104,7 +116,7 @@ function BoardManage() {
                 <div className="action-ele">게시판 생성</div>
                 <div className="flex">
                   <div className="action-input">
-                    <input type="text" onChange={onChangecreateTitle} />
+                    <input type="text" onChange={onChangeName} value={createName} />
                   </div>
                   <div className="del-board-box">
                     <input type="submit" className="del-board" value="생성" />
