@@ -1,4 +1,9 @@
-import { createBoardAPI, readBoardListAPI } from "api/board";
+import {
+  createBoardAPI,
+  deleteBoardAPI,
+  readBoardListAPI,
+  updateBoardAPI,
+} from "api/board";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import useInput from "./../common/useInput";
@@ -15,8 +20,7 @@ export default function useBoardList() {
   }, [cafeInfo]);
 
   //게시판 생성
-
-  const [createName, onChangeName, setCreateName] = useInput("");
+  const [createName, onChangeCreateName, setCreateName] = useInput("");
   const onCreateBoard = async (e) => {
     e.preventDefault();
     try {
@@ -30,16 +34,37 @@ export default function useBoardList() {
     }
   };
 
-  
+  //게시판 삭제
 
-  
+  const onDeletBoard = async (boardId) => {
+    try {
+      const boards = await deleteBoardAPI(cafeInfo._id, boardId);
+      setBoards(boards);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const [updateName, onChangeUpdateName, setUpdateName] = useInput("");
+  const onUpdateBoard = async (boardId) => {
+    try {
+      const response = await updateBoardAPI(cafeInfo._id, updateName, boardId);
+      setBoards(response);
+      setUpdateName("");
+    } catch (error) {
+      alert(error);
+    }
+  };
   return {
     boards,
     cafeInfo,
     setBoards,
     createName,
-    onChangeName,
-    onCreateBoard
-    
+    onChangeCreateName,
+    onCreateBoard,
+    onDeletBoard,
+    onUpdateBoard,
+    onChangeUpdateName,
+    updateName,
   };
 }
