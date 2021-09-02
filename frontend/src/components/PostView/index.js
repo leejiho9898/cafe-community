@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { SetPost } from "modules/post";
 
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { readPostDetailAPI } from "api/post";
 function PostView() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -23,12 +24,12 @@ function PostView() {
   const [updateContent, setupdateContent] = useState("")
   useEffect(() => {
     const getData = async () => {
-      const response = await client.get(`/post/readPostDetail/${postId}`);
-      dispatch(SetPost(response.data.post));
-      setDate(response.data.post.createdAt);
+      const response = await readPostDetailAPI(postId)
+      dispatch(SetPost(response));
+      setDate(response.createdAt);
     };
     getData();
-  }, []);
+  }, [params]);
 
   useEffect(() => {
     const getComment = async () => {
@@ -142,7 +143,7 @@ function PostView() {
                 <div className="reply-contents"> {comment.content}</div>
               )}
             </div>
-            {user._id == comment.writer._id ? (
+            {user._id === comment.writer._id ? (
               <div className="reply-menu">
                 <div className="bubble">
                   <div

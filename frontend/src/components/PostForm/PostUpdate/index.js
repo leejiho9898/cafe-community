@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./style.scss";
 import { useHistory, useParams } from "react-router-dom";
 import useBoardList from "hooks/board/useBoardListEffect";
+import { updatePostAPI } from "api/post";
 
 const PostUpdate = () => {
   const history = useHistory();
@@ -55,10 +56,10 @@ const PostUpdate = () => {
     };
 
     try {
-      const response = await client.patch(`/post/updatePost`, body);
+      const response = await updatePostAPI(title,content,postId)
       history.push("/")
     } catch (e) {
-      alert(e.response.data.message);
+      alert(e);
     }
   };
 

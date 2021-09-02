@@ -12,8 +12,6 @@ function CafeManagement() {
     <>
       <LandingHeader />
 
-      <MainHeader />
-
       <div id="management-container">
         <ManagementNav />
       </div>

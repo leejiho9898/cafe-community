@@ -20,7 +20,6 @@ const CafeMain = () => {
     <>
       <div id="container">
         <LandingHeader />
-        {/* <MainHeader /> */}
         <div className="main">
           <MainSideNav />
           <div className="content">

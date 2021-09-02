@@ -7,6 +7,7 @@ import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
 import cafe, { SetCafe } from "modules/cafe";
 import BorderNav from "../BoardNav";
+import useBoardList from "hooks/board/useBoardListEffect";
 
 function CafeInfoNav() {
   const cafeInfo = useSelector((state) => state.cafe);
@@ -15,7 +16,6 @@ function CafeInfoNav() {
   const [InfoSwich, setInfoSwich] = useState(true);
   const params = useParams();
   const route = params.cafe;
-
   useEffect(() => {
     const getCafe = async () => {
       const response = await client.get(`/cafe/cafeInfo/${route}/${user._id}`);

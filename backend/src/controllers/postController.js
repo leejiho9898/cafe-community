@@ -34,7 +34,7 @@ export const readPostList = async (req, res) => {
     const posts = await Post.find({
       cafe: cafeId,
       board: boardId,
-    });
+    }).populate("writer");
     return res.status(200).json({
       success: true,
       posts: [...posts.reverse()],

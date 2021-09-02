@@ -11,7 +11,7 @@ function BoardManage() {
     boards,
     setBoards,
     createName,
-    onChangeName,
+    onChangeCreateName,
     onCreateBoard,
     onDeletBoard,
     onUpdateBoard,
@@ -82,7 +82,7 @@ function BoardManage() {
                   <div className="action-input">
                     <input
                       type="text"
-                      onChange={onChangeName}
+                      onChange={onChangeCreateName}
                       value={createName}
                     />
                   </div>

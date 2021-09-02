@@ -3,14 +3,15 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
 import "./PostformStyle.scss";
 import { useSelector } from "react-redux";
-import client from "api/client";
 import { useHistory } from "react-router-dom";
-import { readBoardListAPI } from "api/board";
 import useBoardList from "hooks/board/useBoardListEffect";
+import { createPostListAPI } from "api/post";
 const PostForm = () => {
   const history = useHistory();
   const cafeInfo = useSelector((state) => state.cafe);
   const user = useSelector((state) => state.user);
+  const { boards } = useBoardList();
+
   const [SelectedBoard, setSelectedBoard] = useState();
   const [form, setform] = useState({
     title: "",
@@ -18,12 +19,12 @@ const PostForm = () => {
   });
 
   const { title, content } = form;
-  const { boards } = useBoardList();
 
   const onClickBoard = (e) => {
     setSelectedBoard(e.currentTarget.value);
     console.log(SelectedBoard);
   };
+
   const onchange = (e) => {
     const nextForm = {
       ...form,
@@ -36,16 +37,13 @@ const PostForm = () => {
   const onsubmit = async (e) => {
     e.preventDefault();
     console.log(content);
-    const body = {
-      title,
-      content,
-      boardId: SelectedBoard,
-      writer: user._id,
-    };
     try {
-      const response = await client.post(
-        `/post/createPost/${cafeInfo._id}`,
-        body
+      const response = await createPostListAPI(
+        cafeInfo._id,
+        title,
+        content,
+        SelectedBoard,
+        user._id
       );
       console.log(response);
       history.push(`/cafeMain/first/board/${SelectedBoard}`);

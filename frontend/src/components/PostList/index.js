@@ -1,31 +1,22 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./PostListStyle.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import client from "api/client";
 import { SetBoard } from "modules/board";
+import usePostList from "hooks/post/usePostListEffect";
 function PostList(props) {
   const dispatch = useDispatch();
   const params = useParams();
   const boardId = params.boardId;
-  const board = useSelector((state) => state.board);
-  const cafeInfo = useSelector((state) => state.cafe);
-  console.log(cafeInfo)
-  const [posts, setposts] = useState([]);
+  const { cafeInfo, board, posts } = usePostList();
   useEffect(() => {
     const getBoardDetail = async () => {
       const response = await client.get(`/board/readBoard/${boardId}`);
       dispatch(SetBoard(response.data.board));
     };
-
-    const getPostList = async () => {
-      const response = await client.get(
-        `/post/readPostList/${cafeInfo._id}/${boardId}`
-      );
-      setposts(response.data.posts);
-    };
     getBoardDetail();
-    getPostList();
+
   }, [params]);
   return (
     <>
@@ -33,7 +24,7 @@ function PostList(props) {
         <div className="board-tit">{board.name}</div>
         <div className="tit-explanation">{board.name}입니다.</div>
         <div className="list-handler">
-          <div>11,130개의 글</div>
+          <div>{posts.length}개의 글</div>
           <div>
             <input type="checkbox" name="chk_info" value="seeNotice" /> 공지
             숨기기
@@ -99,10 +90,14 @@ function PostList(props) {
                     <div>123123</div>
                   </td>
                   <td className="post-tit">
-                    <Link to={`/cafeMain/${cafeInfo.route}/board/${boardId}/post/${post._id}`}>{post.title}</Link>
+                    <Link
+                      to={`/cafeMain/${cafeInfo.route}/board/${boardId}/post/${post._id}`}
+                    >
+                      {post.title}
+                    </Link>
                   </td>
-                  <td className="td-name">유재석</td>
-                  <td className="td-date">2021.07.10.</td>
+                  <td className="td-name">{post.writer.name}</td>
+                  <td className="td-date">{post.createdAt.substr(5, 5)}</td>
                   <td className="td-view">12</td>
                 </tr>
               ))}

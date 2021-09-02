@@ -45,6 +45,12 @@ export default function useBoardList() {
     }
   };
 
+  //게시판 불러오기
+
+
+
+  
+  //게시판 수정
   const [updateName, onChangeUpdateName, setUpdateName] = useInput("");
   const onUpdateBoard = async (boardId) => {
     try {
