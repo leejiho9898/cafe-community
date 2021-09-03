@@ -5,7 +5,7 @@ export const readPostListAPI = async (cafeId, boardId) => {
   return response.data.posts;
 };
 
-export const createPostListAPI = async (
+export const createPostAPI = async (
   cafeId,
   title,
   content,

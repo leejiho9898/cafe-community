@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
 import "./PostformStyle.scss";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import useBoardList from "hooks/board/useBoardListEffect";
-import { createPostListAPI } from "api/post";
+import { createPostAPI } from "api/post";
 const PostForm = () => {
   const history = useHistory();
   const cafeInfo = useSelector((state) => state.cafe);
@@ -38,7 +38,7 @@ const PostForm = () => {
     e.preventDefault();
     console.log(content);
     try {
-      const response = await createPostListAPI(
+      const response = await createPostAPI(
         cafeInfo._id,
         title,
         content,
@@ -48,7 +48,11 @@ const PostForm = () => {
       console.log(response);
       history.push(`/cafeMain/first/board/${SelectedBoard}`);
     } catch (e) {
-      alert(e.response.data.message);
+      if (e.response.data.message) {
+        alert(e.response.data.message);
+      } else {
+        alert("양식을 정확히 입력해주세요.");
+      }
     }
   };
 
@@ -57,6 +61,7 @@ const PostForm = () => {
       <div className="tit">글쓰기</div>
       <form className="post-write-form" onSubmit={onsubmit}>
         <select name="select-border" id="select" onChange={onClickBoard}>
+          <option value="">게시판을 선택해주세요.</option>
           {boards &&
             boards.map((board, index) => (
               <option key={index} value={board._id}>

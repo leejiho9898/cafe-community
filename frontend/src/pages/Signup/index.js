@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import client from "./../../api/client";
 import { useDispatch, useSelector } from "react-redux";
 import { SetUser } from "modules/user";
-import LandingHeader from "layout/LandingHeader";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -58,7 +57,6 @@ const Signup = () => {
 
   return (
     <>
-      <LandingHeader />
 
       <div id="Signup-container">
         <div className="title">회원가입</div>

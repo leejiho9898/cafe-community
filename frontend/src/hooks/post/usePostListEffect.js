@@ -11,8 +11,8 @@ export default function usePostList() {
       const response = await readPostListAPI(cafeInfo._id, board._id);
       setposts(response);
     };
-    getPosts();
-  }, [board._id, cafeInfo._id]);
+    if (cafeInfo._id&&board._id) getPosts();
+  }, [board, cafeInfo]);
 
   return { cafeInfo, board, posts };
 }

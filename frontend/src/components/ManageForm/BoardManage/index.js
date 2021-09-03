@@ -9,7 +9,6 @@ function BoardManage() {
   const {
     cafeInfo,
     boards,
-    setBoards,
     createName,
     onChangeCreateName,
     onCreateBoard,

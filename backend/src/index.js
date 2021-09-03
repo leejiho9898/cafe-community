@@ -26,6 +26,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
+    useFindAndModify: false,
   })
   .then(console.log("DB 실행"))
   .catch((err) => console.log(err));

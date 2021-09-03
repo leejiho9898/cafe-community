@@ -1,11 +1,11 @@
-import  { useEffect } from "react";
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./PostListStyle.css";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import client from "api/client";
 import { SetBoard } from "modules/board";
 import usePostList from "hooks/post/usePostListEffect";
-function PostList(props) {
+function PostList() {
   const dispatch = useDispatch();
   const params = useParams();
   const boardId = params.boardId;
@@ -16,8 +16,7 @@ function PostList(props) {
       dispatch(SetBoard(response.data.board));
     };
     getBoardDetail();
-
-  }, [params]);
+  }, [boardId]);
   return (
     <>
       <div className="list-container">

@@ -188,15 +188,15 @@ function PostView() {
         <Link to={`/cafeMain/${cafe}/update/${postId}`} className="btm-btn">
           수정
         </Link>
-        <Link className="btm-btn">삭제</Link>
-        <Link
+        <button className="btm-btn">삭제</button>
+        <button
           className="btm-btn"
           onClick={() => {
             history.push(`/cafeMain/${cafe}/board/${boardId}/`);
           }}
         >
           목록
-        </Link>
+        </button>
       </div>
     </div>
   );

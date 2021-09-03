@@ -4,7 +4,6 @@ import client from "./../../api/client";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SetUser } from "modules/user";
-import LandingHeader from "layout/LandingHeader";
 
 const Login = () => {
   const user = useSelector((state) => state.user);
@@ -55,7 +54,7 @@ const Login = () => {
 
   return (
     <>
-      <LandingHeader />
+
 
       <div id="login-container">
         <div className="title">로그인</div>

@@ -1,11 +1,10 @@
 import useBoardList from "hooks/board/useBoardListEffect";
-import React from "react";
 import { IoMdArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 import "./style2.scss";
 const PostManage = () => {
-  const { cafeInfo, boards, setBoards } = useBoardList();
+  const { cafeInfo, boards } = useBoardList();
   return (
     <div id="boardManage-container">
       <div className="title">글 관리</div>

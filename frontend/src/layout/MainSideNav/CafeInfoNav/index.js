@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import client from "api/client";
 import { Link, useParams } from "react-router-dom";
 import { TiDocumentText, TiMessages } from "react-icons/ti";
-import { BsSearch, BsFileText } from "react-icons/bs";
+import { BsSearch,} from "react-icons/bs";
 import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
-import cafe, { SetCafe } from "modules/cafe";
+import { SetCafe } from "modules/cafe";
 import BorderNav from "../BoardNav";
-import useBoardList from "hooks/board/useBoardListEffect";
+
 
 function CafeInfoNav() {
   const cafeInfo = useSelector((state) => state.cafe);
@@ -31,22 +31,22 @@ function CafeInfoNav() {
         <div className="cafe-info-action">
           <div className="info-action-tab">
             <p className="info-tab-link">
-              <Link
+              <button 
                 onClick={() => {
                   setInfoSwich(true);
                 }}
               >
                 카페 정보
-              </Link>
+              </button>
             </p>
             <p className="info-tab-link">
-              <Link
+              <button
                 onClick={() => {
                   setInfoSwich(false);
                 }}
               >
                 나의 활동
-              </Link>
+              </button>
             </p>
           </div>
           {InfoSwich === true ? (
@@ -74,7 +74,7 @@ function CafeInfoNav() {
                 </div>
               </div>
               <div className="my-info-grade">
-                <div clsssName="data-list">열심회원</div>
+                <div className="data-list">열심회원</div>
                 <Link to="">맴버등급 안내</Link>
               </div>
               <div className="info-data">

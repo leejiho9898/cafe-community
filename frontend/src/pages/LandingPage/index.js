@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./LandingPageStyle.css";
-import LandingHeader from "layout/LandingHeader";
 import Footer from "layout/Footer";
 import { Link } from "react-router-dom";
 import client from "api/client";
@@ -17,7 +16,6 @@ const LandingPage = () => {
   }, []);
   return (
     <>
-      <LandingHeader />
       <div id="land">
         <div id="contents"></div>
         <div>

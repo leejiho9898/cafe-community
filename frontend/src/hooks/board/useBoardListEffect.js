@@ -16,7 +16,7 @@ export default function useBoardList() {
       const boards = await readBoardListAPI(cafeInfo._id);
       setBoards(boards);
     };
-    getBoard();
+    if (cafeInfo._id) getBoard();
   }, [cafeInfo]);
 
   //게시판 생성
@@ -47,9 +47,6 @@ export default function useBoardList() {
 
   //게시판 불러오기
 
-
-
-  
   //게시판 수정
   const [updateName, onChangeUpdateName, setUpdateName] = useInput("");
   const onUpdateBoard = async (boardId) => {

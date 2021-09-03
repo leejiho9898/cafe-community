@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "./style.scss";
 import { TiDocumentText } from "react-icons/ti";
 import { Link ,useParams} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import cafe, { SetCafe } from "modules/cafe";
+import  { SetCafe } from "modules/cafe";
 import client from "api/client";
 
 function ManagementNav() {

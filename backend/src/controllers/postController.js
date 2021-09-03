@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { json, Request, Response } from "express";
 import Post from "./../models/post";
 
 // 게시글 생성
@@ -6,6 +6,12 @@ export const createPost = async (req, res) => {
   const { title, content, boardId, writer } = req.body;
   const { cafeId } = req.params;
   try {
+    if (!boardId) {
+      return res.status(400).json({
+        success: false,
+        message: "게시판을 선택해 주세요.",
+      });
+    }
     const post = new Post({
       title,
       content,
@@ -107,26 +113,26 @@ export const updatePost = async (req, res) => {
 
 // 게시물 삭제
 export const deletePost = async (req, res) => {
-    const { postId } = req.params;
-    try {
-      let post = await Post.findById({ _id: postId });
-  
-      if (!post) {
-        return res.status(400).json({
-          success: false,
-          message: "해당 게시물이 존재하지 않습니다.",
-        });
-      }
-  
-      post = await Post.findByIdAndDelete({ _id: postId });
-  
-      return res.status(200).json({
-        success: true,
-      });
-    } catch (e) {
-      return res.status(500).json({
+  const { postId } = req.params;
+  try {
+    let post = await Post.findById({ _id: postId });
+
+    if (!post) {
+      return res.status(400).json({
         success: false,
-        e,
+        message: "해당 게시물이 존재하지 않습니다.",
       });
     }
-  };
+
+    post = await Post.findByIdAndDelete({ _id: postId });
+
+    return res.status(200).json({
+      success: true,
+    });
+  } catch (e) {
+    return res.status(500).json({
+      success: false,
+      e,
+    });
+  }
+};

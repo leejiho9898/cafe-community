@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import client from "api/client";
 import DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
-import { useDispatch, useSelector } from "react-redux";
 import "./style.scss";
 import { useHistory, useParams } from "react-router-dom";
 import useBoardList from "hooks/board/useBoardListEffect";
@@ -12,9 +11,7 @@ const PostUpdate = () => {
   const history = useHistory();
   const params = useParams();
   const postId = params.postId;
-  const cafeInfo = useSelector((state) => state.cafe);
   const [SelectedBoard, setSelectedBoard] = useState();
-  const user = useSelector((state) => state.user);
   const { boards } = useBoardList();
   const [form, setform] = useState({
     title: "",
@@ -30,7 +27,7 @@ const PostUpdate = () => {
       });
     };
     getData();
-  }, [params]);
+  }, [postId]);
 
   const onClickBoard = (e) => {
     setSelectedBoard(e.currentTarget.value);
@@ -38,7 +35,7 @@ const PostUpdate = () => {
   };
 
   const onchange = (e) => {
-     const nextForm = {
+    const nextForm = {
       ...form,
       title: e.target.value,
     };
@@ -48,18 +45,16 @@ const PostUpdate = () => {
 
   const onsubmit = async (e) => {
     e.preventDefault();
-
-    const body = {
-      title,
-      content,
-      postId,
-    };
-
     try {
-      const response = await updatePostAPI(title,content,postId)
-      history.push("/")
+      const response = await updatePostAPI(title, content, postId);
+      console.log(response);
+      history.push("/");
     } catch (e) {
-      alert(e);
+      if (e.response.data.message) {
+        alert(e.response.data.message);
+      } else {
+        alert("양식을 정확히 입력해주세요.");
+      }
     }
   };
 
@@ -67,21 +62,22 @@ const PostUpdate = () => {
     <>
       <div className="tit">글수정</div>
       <form className="post-write-form" onSubmit={onsubmit}>
-        <select name="select-border" id="select"  onChange={onClickBoard}>
-        {boards &&
+        <select name="select-border" id="select" onChange={onClickBoard}>
+          <option value="">게시판을 선택해주세요.</option>
+          {boards &&
             boards.map((board, index) => (
               <option key={index} value={board._id}>
                 {board.name}
               </option>
             ))}
-            {/* 아직 백엔드 문제로 게시판수정까지는 불가능한데 일단 만들긴함 */}
+          {/* 아직 백엔드 문제로 게시판수정까지는 불가능한데 일단 만들긴함 */}
         </select>
         <input
           type="text"
           placeholder="글제목"
           id="tit"
           name="title"
-          value={title}
+          value={title || ""}
           onChange={onchange}
         />
         <div className="write-form">
@@ -99,8 +95,12 @@ const PostUpdate = () => {
             }}
             onChange={(event, editor) => {
               const data = editor.getData();
-
-              setform({ content: data });
+              const nextForm = {
+                ...form,
+                content: data,
+              };
+              setform(nextForm);
+              console.log(form);
             }}
             editor={DecoupledEditor}
             data={content}

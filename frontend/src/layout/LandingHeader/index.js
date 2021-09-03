@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./styles.css";
 import logo from "static/logo.png";
 import { BsSearch } from "react-icons/bs";
@@ -14,6 +13,7 @@ const LandingHeader = () => {
   const logout = async () => {
     try {
       const response = await client.post("/user/logout");
+      console.log(response)
       sessionStorage.removeItem("user");
       dispatch(UserStateEmpty());
       history.push("/");
